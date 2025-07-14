@@ -113,7 +113,7 @@ This project connects vintage analog telephones to AI personalities via a Raspbe
 2. Asterisk → `call_handler.py`
 3. Python records with VAD
 4. Audio sent to `/process-audio`
-5. Whisper → LLM → TTS
+5. Whisper → LLM → TTS (give multiple options for TTS to user through gui, include Elevenlabs)
 6. WAV sent back → played via `aplay`
 
 ## GUI Settings Panel
