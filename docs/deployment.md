@@ -1,24 +1,26 @@
 # Deployment Guide
 
-This project includes a helper script `install.sh` which can bootstrap a fresh
-Raspberry Pi. The script installs required packages, clones this repository into
-`/opt/ai-telephone` and installs a systemd service so the API starts on boot.
+This project includes two helper scripts. `bootstrap.sh` can be downloaded on a
+clean Raspberry Pi to clone the repository and run the installer automatically.
+`install.sh` lives inside the repository and sets up dependencies and the
+systemd service.
 
 ## Step-by-step guide
 
 1. **Flash Raspberry Pi OS Lite** using Raspberry Pi Imager. Enable SSH so the
    Pi can be accessed over the network.
-2. **Log in and download the installer**:
+2. **Log in and download the bootstrap installer**:
 
    ```bash
-   curl -L https://github.com/wagskydive/ai-telephone/raw/main/install.sh \
-       -o install.sh
-   sudo bash install.sh
+   curl -L https://github.com/wagskydive/ai-telephone/raw/main/bootstrap.sh \
+       -o bootstrap.sh
+   sudo bash bootstrap.sh
    ```
 
-   The script will install `git`, `python3-venv` and `asterisk`, clone the
-   repository to `/opt/ai-telephone`, create a virtual environment and register
-   the `ai-telephone.service` systemd unit.
+   This script installs `git`, clones the repository to `/opt/ai-telephone` and
+   then runs `install.sh` from that directory. `install.sh` creates the Python
+   virtual environment, installs dependencies and registers the
+   `ai-telephone.service` unit.
 3. **Start the service**:
 
    ```bash
