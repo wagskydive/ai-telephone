@@ -5,6 +5,9 @@ from __future__ import annotations
 from flask import Flask, request, send_file, jsonify
 import io
 
+from .stt import transcribe
+from .tts import synthesize
+
 
 def create_app() -> Flask:
     """Return a configured Flask application."""
@@ -12,10 +15,13 @@ def create_app() -> Flask:
 
     @app.post('/process-audio')
     def process_audio():
+        """Transcribe uploaded audio and return synthesized response."""
         file = request.files.get('audio_file')
-        data = file.read() if file else b''
+        audio = file.read() if file else b''
+        text = transcribe(audio)
+        response_audio = synthesize(text)
         return send_file(
-            io.BytesIO(data),
+            io.BytesIO(response_audio),
             mimetype='audio/wav',
             as_attachment=False,
             download_name='response.wav',

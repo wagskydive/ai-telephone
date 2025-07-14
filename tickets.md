@@ -55,38 +55,38 @@ Description: Add situation_generator module and integrate it with call_handler t
 Description: Implement Flask backend API with `/process-audio` and `/generate-situation` endpoints.
 
 ## T7 - Raspberry Pi & Asterisk Setup
-- [ ] Started
+- [x] Started
 - [ ] Tests Written
 - [ ] Code Written
 - [ ] Tests Passed
-- [ ] Documentation Written
+- [x] Documentation Written
 
 Description: Install Raspberry Pi OS Lite, set up Asterisk with ATA and mini PBX, and verify trunk dial-out.
 
 ## T8 - Whisper and TTS Integration
-- [ ] Started
-- [ ] Tests Written
-- [ ] Code Written
-- [ ] Tests Passed
-- [ ] Documentation Written
+- [x] Started
+- [x] Tests Written
+- [x] Code Written
+- [x] Tests Passed
+- [x] Documentation Written
 
 Description: Add Whisper transcription and text-to-speech support to the voice interface and processing server.
 
 ## T9 - Character Card Generation
-- [ ] Started
-- [ ] Tests Written
-- [ ] Code Written
-- [ ] Tests Passed
-- [ ] Documentation Written
+- [x] Started
+- [x] Tests Written
+- [x] Code Written
+- [x] Tests Passed
+- [x] Documentation Written
 
 Description: Generate printable character cards from personalities.json for players.
 
 ## T10 - Initiative-Based Outbound Calls
-- [ ] Started
-- [ ] Tests Written
-- [ ] Code Written
-- [ ] Tests Passed
-- [ ] Documentation Written
+- [x] Started
+- [x] Tests Written
+- [x] Code Written
+- [x] Tests Passed
+- [x] Documentation Written
 
 Description: Implement an outbound call loop that selects characters based on their initiative score.
 

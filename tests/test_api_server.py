@@ -1,13 +1,22 @@
-from src.api_server import create_app
 import io
+from unittest import mock
+
+from src.api_server import create_app
 
 
 def test_process_audio():
     app = create_app()
     client = app.test_client()
-    response = client.post('/process-audio', data={'audio_file': (io.BytesIO(b'data'), 'in.wav')})
-    assert response.status_code == 200
-    assert response.data == b'data'
+    with mock.patch("src.api_server.transcribe", return_value="hello") as tr, \
+         mock.patch("src.api_server.synthesize", return_value=b"hi") as syn:
+        response = client.post(
+            "/process-audio",
+            data={"audio_file": (io.BytesIO(b"data"), "in.wav")},
+        )
+        assert response.status_code == 200
+        assert response.data == b"hi"
+        tr.assert_called_once()
+        syn.assert_called_once_with("hello")
 
 
 def test_generate_situation():
