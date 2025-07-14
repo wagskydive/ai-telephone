@@ -144,6 +144,25 @@ Description: Implement actual LLM processing within `/process-audio` so transcri
 
 Description: Add additional TTS backends (including ElevenLabs) and expose a user-selectable option in the GUI.
 
+## T16 - Create install script that downloads the repo and makes it work on a clean Raspberry Pi installation
+- [ ] Started
+- [ ] Tests Written
+- [ ] Code Written
+- [ ] Tests Passed
+- [ ] Documentation Written
+
+Description: We need to be able to clone the repo and run one script that installs everything. Plus a guide that explains the full install guide flashing a fresh raspberry pi install to cloning the repo and running the install script. The explaination should be understandable for anyone without any knowledge.
+
+## T17 - Write a cmplete user manual
+- [ ] Started
+- [ ] Tests Written
+- [ ] Code Written
+- [ ] Tests Passed
+- [ ] Documentation Written
+
+Description: We need an operation manual that explains the workings of the app
+
+
 ## T16 - TTS Latency Optimization
 - [ ] Started
 - [ ] Tests Written
