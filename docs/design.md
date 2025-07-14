@@ -44,6 +44,9 @@ This project connects vintage analog telephones to AI personalities via a Raspbe
 - **situation_generator.py**
   - Prompts LLM to generate a “current situation”
   - Adds realism/mood to the character's response
+- **prompt_builder.py**
+  - Combines the personality prompt, memory snippets and situation
+    into a final prompt sent to the LLM
 
 - **Flask GUI App (gui/app.py)**
   - Web server running on the Pi
@@ -54,7 +57,8 @@ This project connects vintage analog telephones to AI personalities via a Raspbe
 ### LLM Server (Ollama or OpenAI)
 - **/process-audio**
   - `POST`
-  - Request: `{ audio_file (binary), character_id (string), caller_extension (string) }`
+  - Request: `{ audio_file (binary), character_id (string), caller_extension (string), prompt (string?) }`
+  - Header `X-API-Key` required when the server is started with an API key
   - Process: Whisper STT → Build prompt → LLM response → TTS → WAV
   - Response: WAV audio (binary)
 
