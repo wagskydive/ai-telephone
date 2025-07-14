@@ -32,7 +32,7 @@ This document outlines prioritized enhancements and cleanup tasks to improve and
   - Live logs and system status
   - TTS/VAD test tools
 
-- [ ] 🖨️ Implement `card_generator.py` to generate printable PDFs for each AI character
+ - [x] 🖨️ Implement `card_generator.py` to generate printable PDFs for each AI character
 
  - [x] 🌍 Create Vast.ai deployment shell script:
   - GPU setup
@@ -49,6 +49,6 @@ This document outlines prioritized enhancements and cleanup tasks to improve and
 
  - [x] Confirm Pi-side VAD triggers reliably
  - [x] Test with >1 character in outbound mode
- - [x] Log name recognition + reuse across multiple calls
-- [ ] Simulate flaky network to ensure LLM timeouts are caught
+- [x] Log name recognition + reuse across multiple calls
+- [x] Simulate flaky network to ensure LLM timeouts are caught (see `network_testing.md`)
 

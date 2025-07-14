@@ -92,7 +92,7 @@ This planning document defines the phases and milestones to guide development of
 **Goal:** Debug, Evaluate, Add missing features and Polish
 
 ### Tasks:
-- [ ] Complete all tasks in `further_development.md`
+- [x] Complete all tasks in `further_development.md`
 
 
 ## Milestones
