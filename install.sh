@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-# Installation script for a fresh Raspberry Pi.
+# Installation script for Debian or Ubuntu systems.
 
 if [ "$EUID" -ne 0 ]; then
     echo "Please run as root"

@@ -7,7 +7,6 @@ Type=simple
 ExecStart=/usr/bin/python3 -m src.api_server
 WorkingDirectory=/opt/ai-telephone
 Restart=always
-User=pi
 
 [Install]
 WantedBy=multi-user.target

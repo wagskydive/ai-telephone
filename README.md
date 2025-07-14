@@ -1,9 +1,9 @@
 # AI Telephone
 
-AI Telephone connects vintage analog phones to AI personalities via a Raspberry Pi running Asterisk. When a caller picks up the handset or receives a call, they converse with humorous skydiving characters powered by a local or remote language model.
+AI Telephone connects vintage analog phones to AI personalities via a Raspberry Pi or Ubuntu system running Asterisk. When a caller picks up the handset or receives a call, they converse with humorous skydiving characters powered by a local or remote language model.
 
 ## Quick Start
-1. Flash Raspberry Pi OS Lite and enable SSH.
+1. Install on Raspberry Pi OS Lite or Ubuntu.
 2. Download and run the bootstrap installer:
    ```bash
    curl -L https://github.com/wagskydive/ai-telephone/raw/main/bootstrap.sh -o bootstrap.sh
@@ -19,7 +19,7 @@ AI Telephone connects vintage analog phones to AI personalities via a Raspberry 
 - Flask backend API with Whisper STT and multiple TTS engines (espeak, ElevenLabs, Chatterbox)
 
 ## Installation
-For a clean Raspberry Pi, download the `bootstrap.sh` script which clones this repository and runs `install.sh`:
+Download the `bootstrap.sh` script which clones this repository and runs `install.sh`:
 
 ```bash
 curl -L https://github.com/wagskydive/ai-telephone/raw/main/bootstrap.sh -o bootstrap.sh

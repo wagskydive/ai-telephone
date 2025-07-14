@@ -11,14 +11,6 @@ Description: Initialize project directory structure (/src, /data, /docs, /lib) a
 
 ## T2 - Basic Voice Interface
 - [x] Started
-- [x] Tests Written
-- [x] Code Written
-- [x] Tests Passed
-- [x] Documentation Written
-
-Description: Implement initial voice interface with VAD recording, WAV playback, and call handling hooks.
-
-## T3 - Character System Basics
 - [x] Started
 - [x] Tests Written
 - [x] Code Written
@@ -387,3 +379,13 @@ Description: Finalize documentation and cleanup for a field-ready release, ensur
 - [x] Documentation Written
 
 Description: Deploy Chatterbox on the Vast.ai server and document latency tuning steps as outlined in `chatterbox_integration.md`.
+
+
+## T42 - Ubuntu Installation Support
+- [x] Started
+- [x] Tests Written
+- [x] Code Written
+- [x] Tests Passed
+- [x] Documentation Written
+
+Description: Update scripts and docs so the application installs and runs on Ubuntu without Raspberry Pi specific steps.

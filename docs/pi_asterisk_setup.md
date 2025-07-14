@@ -1,6 +1,6 @@
 # Raspberry Pi & Asterisk Setup
 
-This guide outlines the minimal steps to prepare a Raspberry Pi with Asterisk and connect analog phones through an ATA and mini PBX.
+This guide outlines how to prepare a Raspberry Pi or Ubuntu machine with Asterisk and connect analog phones through an ATA and mini PBX.
 
 1. **Install Raspberry Pi OS Lite**
    - Flash the latest Lite image to an SD card using Raspberry Pi Imager.
