@@ -109,19 +109,19 @@ Description: Finalize prompt format and use the LLM to inject greeting mood and 
 Description: Require an ``X-API-Key`` header for API calls when configured.
 
 ## T12 - Backend Pipeline and Security Enhancements
-- [ ] Started
-- [ ] Tests Written
-- [ ] Code Written
-- [ ] Tests Passed
-- [ ] Documentation Written
+- [x] Started
+- [x] Tests Written
+- [x] Code Written
+- [x] Tests Passed
+- [x] Documentation Written
 
 Description: Add Whisper and LLM pipeline, provide multiple TTS options, and secure the API endpoints for Raspberry Pi use.
 
 ## T13 - Deployment and Polishing
-- [ ] Started
+- [x] Started
 - [ ] Tests Written
 - [ ] Code Written
 - [ ] Tests Passed
-- [ ] Documentation Written
+- [x] Documentation Written
 
 Description: Create install script and systemd service, optimize TTS latency, finalize memory summarization, and perform final character recognition testing.

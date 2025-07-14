@@ -38,3 +38,18 @@ def test_api_key_required():
         assert unauthorized.status_code == 401
         authorized = client.post("/process-audio", headers={"X-API-Key": "tok"})
         assert authorized.status_code == 200
+
+
+def test_allowed_ips():
+    app = create_app(allowed_ips=["1.2.3.4"])
+    client = app.test_client()
+    with mock.patch("src.api_server.transcribe", return_value="hi"), mock.patch(
+        "src.api_server.synthesize", return_value=b"out"
+    ):
+        disallowed = client.post("/process-audio", environ_overrides={"REMOTE_ADDR": "2.2.2.2"})
+        assert disallowed.status_code == 403
+        allowed = client.post(
+            "/process-audio",
+            environ_overrides={"REMOTE_ADDR": "1.2.3.4"},
+        )
+        assert allowed.status_code == 200

@@ -41,3 +41,8 @@ def load_memory(memory_dir: Path, personality_id: str) -> List[Dict]:
     if file_path.exists():
         return json.loads(file_path.read_text())
     return []
+
+
+def summarize_memory(entries: List[Dict]) -> str:
+    """Return a simple summary string from saved memory entries."""
+    return " ".join(e.get("summary", "") for e in entries).strip()
