@@ -13,4 +13,5 @@ def play_wav(file_path: Path) -> None:
     file_path:
         Path to the WAV file to play.
     """
-    subprocess.run(["aplay", str(file_path)], check=False)
+    # ``-q`` suppresses header messages from ``aplay`` for slightly faster start.
+    subprocess.run(["aplay", "-q", str(file_path)], check=False)

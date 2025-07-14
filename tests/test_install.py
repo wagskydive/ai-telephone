@@ -1,5 +1,7 @@
 def test_install_script_contents():
     text = open('install.sh').read()
+    assert 'apt-get install' in text
+    assert 'git clone' in text
     assert 'python3 -m venv' in text
     assert 'systemctl enable ai-telephone.service' in text
 
