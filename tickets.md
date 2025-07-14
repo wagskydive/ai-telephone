@@ -127,16 +127,16 @@ Description: Add Whisper and LLM pipeline, provide multiple TTS options, and sec
 Description: Create install script and systemd service, optimize TTS latency, finalize memory summarization, and perform final character recognition testing.
 
 ## T14 - LLM Integration Pipeline
-- [ ] Started
-- [ ] Tests Written
-- [ ] Code Written
-- [ ] Tests Passed
-- [ ] Documentation Written
+- [x] Started
+- [x] Tests Written
+- [x] Code Written
+- [x] Tests Passed
+- [x] Documentation Written
 
 Description: Implement actual LLM processing within `/process-audio` so transcribed text is sent to a language model and the response is synthesized.
 
 ## T15 - Enhanced TTS Options
-- [ ] Started
+- [x] Started
 - [ ] Tests Written
 - [ ] Code Written
 - [ ] Tests Passed

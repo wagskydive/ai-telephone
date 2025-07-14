@@ -61,8 +61,7 @@ This planning document defines the phases and milestones to guide development of
 ### Tasks:
 - [x] Flask app with:
   - `/process-audio` – main AI loop
-  - `/generate-situation` – scene builder
-- [ ] Add Whisper + LLM pipeline
+- [x] Add Whisper + LLM pipeline
 - [ ] Add TTS return, give multiple options for TTS to user through gui, include Elevenlabs
 - [x] Secure endpoint for Pi use
 
