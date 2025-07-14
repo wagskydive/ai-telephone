@@ -21,6 +21,32 @@ def guess_name(text: str) -> str:
             return m.group(1).capitalize()
     return ""
 
+
+def _names_path(memory_dir: Path) -> Path:
+    return memory_dir / "names.json"
+
+
+def remember_name(memory_dir: Path, extension: str, name: str) -> None:
+    """Store ``name`` for the given caller ``extension``."""
+    if not name:
+        return
+    path = _names_path(memory_dir)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    if path.exists():
+        data = json.loads(path.read_text())
+    else:
+        data = {}
+    data[extension] = name
+    path.write_text(json.dumps(data, indent=2))
+
+
+def get_known_name(memory_dir: Path, extension: str) -> str:
+    """Return stored name for ``extension`` if available."""
+    path = _names_path(memory_dir)
+    if path.exists():
+        return json.loads(path.read_text()).get(extension, "")
+    return ""
+
 def log_interaction(
     memory_dir: Path,
     personality_id: str,
@@ -57,6 +83,7 @@ def log_interaction(
     if max_entries is not None and len(data) > max_entries:
         data = data[-max_entries:]
     file_path.write_text(json.dumps(data, indent=2))
+    remember_name(memory_dir, caller_extension, name_guess)
 
 
 def load_memory(memory_dir: Path, personality_id: str) -> List[Dict]:
