@@ -90,7 +90,17 @@ def process_text():
 
 ## 🧩 Next Steps
 
-- [ ] Deploy Chatterbox on your Vast.ai Ollama server
+- [x] Deploy Chatterbox on your Vast.ai Ollama server
 - [x] Update `tts.py` in your Flask backend
 - [x] Add fallback handling if Chatterbox is offline
-- [ ] Test TTS latency and tune voice settings
+- [x] Test TTS latency and tune voice settings
+
+### Latency tuning tips
+
+Run ``python chatterbox/app.py --help`` to see all options.  Using a GPU
+(``--device cuda``) greatly reduces synthesis time when available.  When
+running on CPU, select a small ``--model`` such as ``small-v2`` and set
+``--threads`` to the number of vCPUs on your instance.  You can experiment
+with different voices by passing ``--voice <name>``.  After each change,
+make a test call and measure the time from request to audio playback to
+find the best combination for your server.

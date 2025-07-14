@@ -10,5 +10,8 @@ Run it on a fresh Ubuntu image:
 bash vast_deploy.sh
 ```
 
-After execution, the Flask server will be running in the background and serving
-requests on port 5000.
+After execution, the Flask server will be running in the background on
+port 5000.  The script also clones and launches Chatterbox TTS so that the API
+can use fast local speech synthesis.  By default the Chatterbox server listens
+on port 7860 and the API is started with ``CHATTERBOX_URL`` pointing at this
+local instance.

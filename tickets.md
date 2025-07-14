@@ -380,10 +380,10 @@ Description: Simulate flaky network conditions to ensure LLM timeouts and relate
 Description: Finalize documentation and cleanup for a field-ready release, ensuring installation steps and code examples are up to date.
 
 ## T41 - Chatterbox Deployment Cleanup
-- [ ] Started
-- [ ] Tests Written
-- [ ] Code Written
-- [ ] Tests Passed
-- [ ] Documentation Written
+- [x] Started
+- [x] Tests Written
+- [x] Code Written
+- [x] Tests Passed
+- [x] Documentation Written
 
 Description: Deploy Chatterbox on the Vast.ai server and document latency tuning steps as outlined in `chatterbox_integration.md`.
