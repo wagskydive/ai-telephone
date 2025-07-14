@@ -21,12 +21,12 @@ This planning document defines the phases and milestones to guide development of
 **Goal:** Create basic AI loop using VAD, Whisper, LLM, and TTS
 
 ### Tasks:
-- [ ] `call_handler.py`: core handler script
-- [ ] `vad_recorder.py`: record speech naturally
-- [ ] `audio_player.py`: play WAV responses
+- [x] `call_handler.py`: core handler script
+- [x] `vad_recorder.py`: record speech naturally
+- [x] `audio_player.py`: play WAV responses
 - [ ] Add Whisper + TTS (local or remote)
-- [ ] Create `/process-audio` endpoint (Flask or FastAPI)
-- [ ] Test basic call → AI → response cycle
+- [x] Create `/process-audio` endpoint (Flask or FastAPI)
+- [x] Test basic call → AI → response cycle
 
 ---
 
@@ -34,13 +34,13 @@ This planning document defines the phases and milestones to guide development of
 **Goal:** Implement skydiving personalities with extensions and memory
 
 ### Tasks:
-- [ ] Define character schema (`personalities.json`)
-- [ ] Add unique extensions (701–705)
-- [ ] Add random personality logic for ext 1000
+- [x] Define character schema (`personalities.json`)
+- [x] Add unique extensions (701–705)
+- [x] Add random personality logic for ext 1000
 - [ ] Print-ready character card generation
 - [ ] Add initiative-based outbound call loop
-- [ ] Integrate `memory_logger.py`
-- [ ] Save memory log per character
+- [x] Integrate `memory_logger.py`
+- [x] Save memory log per character
 
 ---
 
@@ -49,8 +49,8 @@ This planning document defines the phases and milestones to guide development of
 
 ### Tasks:
 - [ ] Design prompt format
-- [ ] Implement `situation_generator.py`
-- [ ] Add call-start context logic to `call_handler.py`
+- [x] Implement `situation_generator.py`
+- [x] Add call-start context logic to `call_handler.py`
 - [ ] Use LLM to inject greeting mood/situation
 
 ---
@@ -59,7 +59,7 @@ This planning document defines the phases and milestones to guide development of
 **Goal:** Run all LLM interactions on local Ollama server
 
 ### Tasks:
-- [ ] Flask app with:
+- [x] Flask app with:
   - `/process-audio` – main AI loop
   - `/generate-situation` – scene builder
 - [ ] Add Whisper + LLM pipeline
