@@ -5,6 +5,8 @@ from src.memory_logger import (
     load_memory,
     summarize_memory,
     guess_name,
+    remember_name,
+    get_known_name,
 )
 
 
@@ -58,3 +60,12 @@ def test_log_interaction_guess(tmp_path):
     )
     data = load_memory(memory_dir, "c")
     assert data[0]["name_guess"] == "Claire"
+
+def test_remember_name(tmp_path):
+    memory_dir = tmp_path / "mem"
+    memory_dir.mkdir()
+    remember_name(memory_dir, "600", "Bob")
+    assert get_known_name(memory_dir, "600") == "Bob"
+    remember_name(memory_dir, "600", "Robert")
+    assert get_known_name(memory_dir, "600") == "Robert"
+

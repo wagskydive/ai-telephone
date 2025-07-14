@@ -299,19 +299,19 @@ Description: Add inferred name guessing in the prompt and summary pipeline to pe
 Description: Improve error handling in the API server for malformed audio or missing fields.
 
 ## T32 - Web-Based GUI
-- [ ] Started
-- [ ] Tests Written
-- [ ] Code Written
-- [ ] Tests Passed
+- [x] Started
+- [x] Tests Written
+- [x] Code Written
+- [x] Tests Passed
 - [ ] Documentation Written
 
 Description: Build a web-based GUI for editing characters, viewing live logs, and running TTS/VAD tests.
 
 ## T33 - Vast.ai Deployment Script
-- [ ] Started
-- [ ] Tests Written
-- [ ] Code Written
-- [ ] Tests Passed
+- [x] Started
+- [x] Tests Written
+- [x] Code Written
+- [x] Tests Passed
 - [ ] Documentation Written
 
 Description: Create a shell script to deploy the backend on Vast.ai including GPU setup and model installation.
@@ -353,10 +353,10 @@ Description: Confirm that Pi-side voice activity detection reliably triggers rec
 Description: Test outbound calling with more than one character active at a time.
 
 ## T38 - Name Recognition Persistence
-- [ ] Started
-- [ ] Tests Written
-- [ ] Code Written
-- [ ] Tests Passed
+- [x] Started
+- [x] Tests Written
+- [x] Code Written
+- [x] Tests Passed
 - [ ] Documentation Written
 
 Description: Log recognized names and reuse them across multiple calls for continuity.

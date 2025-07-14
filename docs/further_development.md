@@ -27,14 +27,14 @@ This document outlines prioritized enhancements and cleanup tasks to improve and
 
 ## 🥉 Optional / Bonus Features
 
-- [ ] 🧩 Create a web-based GUI (Flask or React) for:
+ - [x] 🧩 Create a web-based GUI (Flask or React) for:
   - Editing characters, extensions, initiative values
   - Live logs and system status
   - TTS/VAD test tools
 
 - [ ] 🖨️ Implement `card_generator.py` to generate printable PDFs for each AI character
 
-- [ ] 🌍 Create Vast.ai deployment shell script:
+ - [x] 🌍 Create Vast.ai deployment shell script:
   - GPU setup
   - Install Ollama + Python
   - Deploy `api_server.py` + models
@@ -49,6 +49,6 @@ This document outlines prioritized enhancements and cleanup tasks to improve and
 
  - [x] Confirm Pi-side VAD triggers reliably
  - [x] Test with >1 character in outbound mode
-- [ ] Log name recognition + reuse across multiple calls
+ - [x] Log name recognition + reuse across multiple calls
 - [ ] Simulate flaky network to ensure LLM timeouts are caught
 
