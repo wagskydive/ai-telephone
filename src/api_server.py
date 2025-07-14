@@ -4,10 +4,13 @@ from __future__ import annotations
 
 from flask import Flask, request, send_file, jsonify, abort
 import io
+import logging
 
 from .stt import transcribe
 from .tts import synthesize
 from .llm import generate_response
+
+logger = logging.getLogger(__name__)
 
 
 def create_app(api_key: str | None = None, allowed_ips: list[str] | None = None) -> Flask:
@@ -27,9 +30,13 @@ def create_app(api_key: str | None = None, allowed_ips: list[str] | None = None)
         file = request.files.get("audio_file")
         audio = file.read() if file else b""
         prompt = request.form.get("prompt")
-        text = transcribe(audio)
-        reply = generate_response(text, prompt)
-        response_audio = synthesize(reply)
+        try:
+            text = transcribe(audio)
+            reply = generate_response(text, prompt)
+            response_audio = synthesize(reply)
+        except Exception:  # pragma: no cover - log unexpected failures
+            logger.exception("processing failed")
+            return ("", 500)
         return send_file(
             io.BytesIO(response_audio),
             mimetype="audio/wav",
@@ -37,12 +44,42 @@ def create_app(api_key: str | None = None, allowed_ips: list[str] | None = None)
             download_name="response.wav",
         )
 
+    @app.post("/process-text")
+    def process_text():
+        """Send provided text to the LLM and return synthesized speech."""
+        check_key()
+        data = request.get_json(force=True, silent=True) or {}
+        text = data.get("text", "")
+        prompt = data.get("prompt")
+        try:
+            reply = generate_response(text, prompt)
+            response_audio = synthesize(reply)
+        except Exception:  # pragma: no cover - log unexpected failures
+            logger.exception("text processing failed")
+            return ("", 500)
+        return send_file(io.BytesIO(response_audio), mimetype="audio/wav")
+
     @app.post("/generate-situation")
     def generate_situation():
         check_key()
         payload = request.get_json(force=True, silent=True) or {}
         char_id = payload.get("character_id", "unknown")
-        return jsonify({"situation": f"situation for {char_id}"})
+        memory = payload.get("memory_snippets", [])
+        personality_prompt = payload.get("personality_prompt", "")
+        prompt_lines = []
+        if personality_prompt:
+            prompt_lines.append(personality_prompt)
+        prompt_lines.extend(memory)
+        prompt_lines.append(
+            f"Generate a short phone call situation for {char_id}."
+        )
+        prompt = "\n".join(prompt_lines)
+        try:
+            situation = generate_response("", prompt)
+        except Exception:  # pragma: no cover - log unexpected failures
+            logger.exception("situation generation failed")
+            return jsonify({"situation": ""}), 500
+        return jsonify({"situation": situation})
 
     return app
 
