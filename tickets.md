@@ -53,3 +53,66 @@ Description: Add situation_generator module and integrate it with call_handler t
 - [x] Documentation Written
 
 Description: Implement Flask backend API with `/process-audio` and `/generate-situation` endpoints.
+
+## T7 - Raspberry Pi & Asterisk Setup
+- [ ] Started
+- [ ] Tests Written
+- [ ] Code Written
+- [ ] Tests Passed
+- [ ] Documentation Written
+
+Description: Install Raspberry Pi OS Lite, set up Asterisk with ATA and mini PBX, and verify trunk dial-out.
+
+## T8 - Whisper and TTS Integration
+- [ ] Started
+- [ ] Tests Written
+- [ ] Code Written
+- [ ] Tests Passed
+- [ ] Documentation Written
+
+Description: Add Whisper transcription and text-to-speech support to the voice interface and processing server.
+
+## T9 - Character Card Generation
+- [ ] Started
+- [ ] Tests Written
+- [ ] Code Written
+- [ ] Tests Passed
+- [ ] Documentation Written
+
+Description: Generate printable character cards from personalities.json for players.
+
+## T10 - Initiative-Based Outbound Calls
+- [ ] Started
+- [ ] Tests Written
+- [ ] Code Written
+- [ ] Tests Passed
+- [ ] Documentation Written
+
+Description: Implement an outbound call loop that selects characters based on their initiative score.
+
+## T11 - Prompt Design and Greeting Logic
+- [ ] Started
+- [ ] Tests Written
+- [ ] Code Written
+- [ ] Tests Passed
+- [ ] Documentation Written
+
+Description: Finalize prompt format and use the LLM to inject greeting mood and situations at call start.
+
+## T12 - Backend Pipeline and Security Enhancements
+- [ ] Started
+- [ ] Tests Written
+- [ ] Code Written
+- [ ] Tests Passed
+- [ ] Documentation Written
+
+Description: Add Whisper and LLM pipeline, provide multiple TTS options, and secure the API endpoints for Raspberry Pi use.
+
+## T13 - Deployment and Polishing
+- [ ] Started
+- [ ] Tests Written
+- [ ] Code Written
+- [ ] Tests Passed
+- [ ] Documentation Written
+
+Description: Create install script and systemd service, optimize TTS latency, finalize memory summarization, and perform final character recognition testing.
