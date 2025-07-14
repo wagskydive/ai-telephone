@@ -73,7 +73,7 @@ This planning document defines the phases and milestones to guide development of
 ### Tasks:
 - [x] Install all services via `install.sh`
 - [x] Add systemd service for startup
-- [ ] Optimize TTS playback latency
+ - [x] Optimize TTS playback latency
  - [x] Final memory review logic (summarization tuning)
 - [ ] Final test: character recognition by AI
 
