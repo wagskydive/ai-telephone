@@ -43,6 +43,8 @@ def load_memory(memory_dir: Path, personality_id: str) -> List[Dict]:
     return []
 
 
-def summarize_memory(entries: List[Dict]) -> str:
-    """Return a simple summary string from saved memory entries."""
-    return " ".join(e.get("summary", "") for e in entries).strip()
+def summarize_memory(entries: List[Dict], *, limit: int = 3) -> str:
+    """Return a short summary string from the last ``limit`` entries."""
+    recent = entries[-limit:]
+    parts = [e.get("summary", "") for e in recent if e.get("summary")]
+    return "; ".join(parts).strip()

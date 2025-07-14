@@ -12,4 +12,6 @@ def test_log_and_load(tmp_path):
     assert len(data) == 2
     assert data[0]["caller_extension"] == "600"
     assert data[1]["summary"] == "bye"
-    assert summarize_memory(data) == "hi bye"
+    assert summarize_memory(data) == "hi; bye"
+    # limit should restrict entries
+    assert summarize_memory(data, limit=1) == "bye"
