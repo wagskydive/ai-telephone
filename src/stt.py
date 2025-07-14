@@ -3,6 +3,9 @@ from __future__ import annotations
 
 
 from tempfile import NamedTemporaryFile
+import logging
+
+logger = logging.getLogger(__name__)
 
 try:  # Optional heavy dependency
     import whisper  # type: ignore
@@ -17,9 +20,13 @@ def transcribe(audio_bytes: bytes) -> str:
     if whisper is None:  # pragma: no cover - environment without whisper
         return "beep"
 
-    with NamedTemporaryFile(suffix=".wav") as tmp:
-        tmp.write(audio_bytes)
-        tmp.flush()
-        model = whisper.load_model("base")
-        result = model.transcribe(tmp.name)
-        return result.get("text", "")
+    try:
+        with NamedTemporaryFile(suffix=".wav") as tmp:
+            tmp.write(audio_bytes)
+            tmp.flush()
+            model = whisper.load_model("base")
+            result = model.transcribe(tmp.name)
+            return result.get("text", "")
+    except Exception:  # pragma: no cover - log failure and fallback
+        logger.exception("whisper failed")
+        return ""

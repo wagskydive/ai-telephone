@@ -5,11 +5,14 @@ from tempfile import NamedTemporaryFile
 import subprocess
 import os
 import requests
+import logging
 
 try:  # optional dependency
     import pyttsx3  # type: ignore
 except Exception:  # pragma: no cover - pyttsx3 may not be installed
     pyttsx3 = None
+
+logger = logging.getLogger(__name__)
 
 
 def synthesize(
@@ -35,16 +38,24 @@ def synthesize(
         return text.encode("utf-8")
 
     if method == "espeak":
-        with NamedTemporaryFile(suffix=".wav") as tmp:
-            subprocess.run(["espeak", "-w", tmp.name, text], check=True)
-            return tmp.read()
+        try:
+            with NamedTemporaryFile(suffix=".wav") as tmp:
+                subprocess.run(["espeak", "-w", tmp.name, text], check=True)
+                return tmp.read()
+        except Exception:  # pragma: no cover - log failure
+            logger.exception("espeak failed")
+            return synthesize(text, method="dummy")
 
     if method == "pyttsx3" and pyttsx3 is not None:
-        engine = pyttsx3.init()
-        with NamedTemporaryFile(suffix=".wav") as tmp:
-            engine.save_to_file(text, tmp.name)
-            engine.runAndWait()
-            return tmp.read()
+        try:
+            engine = pyttsx3.init()
+            with NamedTemporaryFile(suffix=".wav") as tmp:
+                engine.save_to_file(text, tmp.name)
+                engine.runAndWait()
+                return tmp.read()
+        except Exception:  # pragma: no cover - log failure
+            logger.exception("pyttsx3 failed")
+            return synthesize(text, method="dummy")
 
     if method == "chatterbox":
         url = base_url or os.getenv("CHATTERBOX_URL", "http://localhost:7860/speak")
@@ -52,7 +63,8 @@ def synthesize(
             resp = requests.post(url, json={"text": text})
             resp.raise_for_status()
             return resp.content
-        except Exception:
+        except Exception:  # pragma: no cover - log failure
+            logger.exception("chatterbox failed")
             return synthesize(text, method="dummy")
 
     if method == "elevenlabs":
@@ -61,8 +73,12 @@ def synthesize(
             raise ValueError("ElevenLabs API key not set")
         url = f"https://api.elevenlabs.io/v1/text-to-speech/{voice_id}"
         headers = {"xi-api-key": key}
-        resp = requests.post(url, json={"text": text}, headers=headers)
-        resp.raise_for_status()
-        return resp.content
+        try:
+            resp = requests.post(url, json={"text": text}, headers=headers)
+            resp.raise_for_status()
+            return resp.content
+        except Exception:  # pragma: no cover - log failure
+            logger.exception("elevenlabs failed")
+            return synthesize(text, method="dummy")
 
     raise ValueError("Unknown TTS method")

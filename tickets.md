@@ -211,9 +211,18 @@ Description: Add Chatterbox TTS backend with fallback handling.
 
 ## T22 - Further Development Tasks
 - [x] Started
- - [ ] Tests Written
- - [ ] Code Written
- - [ ] Tests Passed
- - [ ] Documentation Written
+- [x] Tests Written
+- [x] Code Written
+- [x] Tests Passed
+- [x] Documentation Written
 
 Description: Begin implementing items listed in further_development.md.
+
+## T23 - Outbound Call History Check
+- [ ] Started
+- [ ] Tests Written
+- [ ] Code Written
+- [ ] Tests Passed
+- [ ] Documentation Written
+
+Description: Prevent characters from repeatedly calling the same extension by keeping a short call history and skipping recently dialed numbers.

@@ -11,6 +11,12 @@ def test_transcribe_with_whisper():
         assert stt.transcribe(b"data") == "hello"
 
 
+def test_transcribe_whisper_failure():
+    with mock.patch.object(stt, "whisper", mock.Mock(load_model=lambda n: (_ for _ in ()).throw(RuntimeError))):
+        out = stt.transcribe(b"data")
+        assert out == ""
+
+
 def test_transcribe_empty():
     assert stt.transcribe(b"") == ""
 

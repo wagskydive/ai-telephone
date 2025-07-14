@@ -4,12 +4,15 @@ from __future__ import annotations
 
 from pathlib import Path
 import requests
+import logging
 
 from .audio_player import play_wav
 from .vad_recorder import record_until_silence
 from .memory_logger import log_interaction, load_memory
 from .situation_generator import generate_situation
 from .prompt_builder import build_prompt
+
+logger = logging.getLogger(__name__)
 
 
 def handle_call(
@@ -48,7 +51,11 @@ def handle_call(
             situation = None
 
     recorded = temp_dir / "caller.wav"
-    record_until_silence(recorded)
+    try:
+        record_until_silence(recorded)
+    except Exception:  # pragma: no cover - log failure
+        logger.exception("recording failed")
+        return
 
     with recorded.open("rb") as fh:
         data = {"character_id": personality_id}
@@ -58,12 +65,16 @@ def handle_call(
             prompt = build_prompt(personality_prompt, memory_snippets, situation)
             data["prompt"] = prompt
 
-        response = requests.post(
-            f"{server_url}/process-audio",
-            files={"audio_file": fh},
-            data=data,
-        )
-        response.raise_for_status()
+        try:
+            response = requests.post(
+                f"{server_url}/process-audio",
+                files={"audio_file": fh},
+                data=data,
+            )
+            response.raise_for_status()
+        except Exception:  # pragma: no cover - log failure
+            logger.exception("LLM request failed")
+            return
 
     response_path = temp_dir / "response.wav"
     response_path.write_bytes(response.content)
