@@ -9,13 +9,15 @@ from .stt import transcribe
 from .tts import synthesize
 
 
-def create_app(api_key: str | None = None) -> Flask:
+def create_app(api_key: str | None = None, allowed_ips: list[str] | None = None) -> Flask:
     """Return a configured Flask application."""
     app = Flask(__name__)
 
     def check_key() -> None:
         if api_key and request.headers.get("X-API-Key") != api_key:
             abort(401)
+        if allowed_ips and request.remote_addr not in allowed_ips:
+            abort(403)
 
     @app.post("/process-audio")
     def process_audio():

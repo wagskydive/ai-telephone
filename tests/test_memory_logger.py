@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from src.memory_logger import log_interaction, load_memory
+from src.memory_logger import log_interaction, load_memory, summarize_memory
 
 
 def test_log_and_load(tmp_path):
@@ -12,3 +12,4 @@ def test_log_and_load(tmp_path):
     assert len(data) == 2
     assert data[0]["caller_extension"] == "600"
     assert data[1]["summary"] == "bye"
+    assert summarize_memory(data) == "hi bye"

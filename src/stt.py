@@ -1,10 +1,25 @@
-"""Simple placeholder Speech-To-Text implementation."""
+"""Speech-To-Text utilities using Whisper when available."""
 from __future__ import annotations
 
 
+from tempfile import NamedTemporaryFile
+
+try:  # Optional heavy dependency
+    import whisper  # type: ignore
+except Exception:  # pragma: no cover - fallback when whisper missing
+    whisper = None
+
 def transcribe(audio_bytes: bytes) -> str:
-    """Return a dummy transcription for given audio bytes."""
-    # A real implementation would run Whisper or another STT engine here.
+    """Transcribe ``audio_bytes`` using Whisper if installed."""
     if not audio_bytes:
         return ""
-    return "beep"
+
+    if whisper is None:  # pragma: no cover - environment without whisper
+        return "beep"
+
+    with NamedTemporaryFile(suffix=".wav") as tmp:
+        tmp.write(audio_bytes)
+        tmp.flush()
+        model = whisper.load_model("base")
+        result = model.transcribe(tmp.name)
+        return result.get("text", "")

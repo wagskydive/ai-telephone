@@ -2,3 +2,5 @@ Flask
 webrtcvad
 sounddevice
 requests
+openai-whisper
+pyttsx3
