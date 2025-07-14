@@ -181,3 +181,12 @@ Description: Profile and reduce audio playback latency, ensuring snappy response
 - [ ] Documentation Written
 
 Description: Validate that each AI personality consistently identifies themselves during conversations.
+
+## T19 - Bootstrap Installer
+- [x] Started
+- [x] Tests Written
+- [x] Code Written
+- [x] Tests Passed
+- [x] Documentation Written
+
+Description: Add bootstrap.sh that installs git, clones the repo and executes install.sh for one-command installation.
