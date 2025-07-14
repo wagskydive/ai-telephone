@@ -326,29 +326,29 @@ Description: Create a shell script to deploy the backend on Vast.ai including GP
 Description: Implement a dashboard showing call statistics such as calls per hour and most popular characters.
 
 ## T35 - Local Audio Testing CLI
-- [ ] Started
-- [ ] Tests Written
-- [ ] Code Written
-- [ ] Tests Passed
-- [ ] Documentation Written
+- [x] Started
+- [x] Tests Written
+- [x] Code Written
+- [x] Tests Passed
+- [x] Documentation Written
 
 Description: Provide a command-line tool (`simulate_call.py`) to test audio processing locally.
 
 ## T36 - VAD Reliability Testing
-- [ ] Started
-- [ ] Tests Written
-- [ ] Code Written
-- [ ] Tests Passed
-- [ ] Documentation Written
+- [x] Started
+- [x] Tests Written
+- [x] Code Written
+- [x] Tests Passed
+- [x] Documentation Written
 
 Description: Confirm that Pi-side voice activity detection reliably triggers recording.
 
 ## T37 - Multi-Character Outbound Test
-- [ ] Started
-- [ ] Tests Written
-- [ ] Code Written
-- [ ] Tests Passed
-- [ ] Documentation Written
+- [x] Started
+- [x] Tests Written
+- [x] Code Written
+- [x] Tests Passed
+- [x] Documentation Written
 
 Description: Test outbound calling with more than one character active at a time.
 

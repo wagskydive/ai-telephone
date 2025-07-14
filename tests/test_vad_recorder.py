@@ -21,3 +21,23 @@ def test_record_until_silence(tmp_path):
         rs.assert_called()
         vad.is_speech.assert_called()
         wopen.assert_called_once()
+
+def test_record_until_silence_only_silence(tmp_path):
+    out = tmp_path / "out.wav"
+    fake_stream = mock.MagicMock()
+    fake_stream.__enter__.return_value = fake_stream
+    fake_stream.read.side_effect = [(b'x', None)] * 3
+
+    with mock.patch("sounddevice.RawInputStream", return_value=fake_stream), \
+         mock.patch("wave.open"), \
+         mock.patch("webrtcvad.Vad") as vad_cls:
+        vad = vad_cls.return_value
+        vad.is_speech.return_value = False
+        record_until_silence(
+            out,
+            sample_rate=16000,
+            frame_duration=0.01,
+            silence_duration=0.02,
+        )
+        # should process multiple frames of silence before stopping
+        assert vad.is_speech.call_count >= 2

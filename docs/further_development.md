@@ -41,14 +41,14 @@ This document outlines prioritized enhancements and cleanup tasks to improve and
 
 - [ ] 📊 Build analytics dashboard (calls/hour, most popular character, etc.)
 
-- [ ] 🔉 Add local audio testing CLI (`simulate_call.py`)
+- [x] 🔉 Add local audio testing CLI (`simulate_call.py`)
 
 ---
 
 ## 🧪 Final Testing Suggestions
 
-- [ ] Confirm Pi-side VAD triggers reliably
-- [ ] Test with >1 character in outbound mode
+ - [x] Confirm Pi-side VAD triggers reliably
+ - [x] Test with >1 character in outbound mode
 - [ ] Log name recognition + reuse across multiple calls
 - [ ] Simulate flaky network to ensure LLM timeouts are caught
 

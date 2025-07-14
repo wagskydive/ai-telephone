@@ -47,3 +47,9 @@ pytest -q
 
 See the `docs/` directory for design notes, deployment instructions and the user manual.
 
+
+For quick local testing you can run the speech pipeline without Asterisk:
+
+```bash
+python -m src.simulate_call --text "Hello"
+```
