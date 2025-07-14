@@ -226,3 +226,146 @@ Description: Begin implementing items listed in further_development.md.
 - [ ] Documentation Written
 
 Description: Prevent characters from repeatedly calling the same extension by keeping a short call history and skipping recently dialed numbers.
+## T24 - Voice Pipeline Fallback Handling
+- [ ] Started
+- [ ] Tests Written
+- [ ] Code Written
+- [ ] Tests Passed
+- [ ] Documentation Written
+
+Description: Add fallback handling when Whisper, LLM, or TTS components fail so calls continue gracefully.
+
+## T25 - Process Text Endpoint
+- [ ] Started
+- [ ] Tests Written
+- [ ] Code Written
+- [ ] Tests Passed
+- [ ] Documentation Written
+
+Description: Add `/process-text` endpoint to the API server to support Pi-side Whisper and text-only input.
+
+## T26 - Robust Recording and LLM Requests
+- [ ] Started
+- [ ] Tests Written
+- [ ] Code Written
+- [ ] Tests Passed
+- [ ] Documentation Written
+
+Description: Wrap `record_until_silence()` and LLM requests in `try/except` blocks with proper logging.
+
+## T27 - Improved Logging
+- [ ] Started
+- [ ] Tests Written
+- [ ] Code Written
+- [ ] Tests Passed
+- [ ] Documentation Written
+
+Description: Increase logging detail in `call_handler.py` and `api_server.py` for easier debugging.
+
+## T28 - Personality Pause/Disable
+- [ ] Started
+- [ ] Tests Written
+- [ ] Code Written
+- [ ] Tests Passed
+- [ ] Documentation Written
+
+Description: Add ability to pause or disable individual personalities from making outbound calls.
+
+## T29 - Log Pruning
+- [ ] Started
+- [ ] Tests Written
+- [ ] Code Written
+- [ ] Tests Passed
+- [ ] Documentation Written
+
+Description: Expand `log_interaction()` to prune logs after a set number of entries or rotate log files.
+
+## T30 - Name Guessing Logic
+- [ ] Started
+- [ ] Tests Written
+- [ ] Code Written
+- [ ] Tests Passed
+- [ ] Documentation Written
+
+Description: Add inferred name guessing in the prompt and summary pipeline to personalize interactions.
+
+## T31 - API Error Handling Improvements
+- [ ] Started
+- [ ] Tests Written
+- [ ] Code Written
+- [ ] Tests Passed
+- [ ] Documentation Written
+
+Description: Improve error handling in the API server for malformed audio or missing fields.
+
+## T32 - Web-Based GUI
+- [ ] Started
+- [ ] Tests Written
+- [ ] Code Written
+- [ ] Tests Passed
+- [ ] Documentation Written
+
+Description: Build a web-based GUI for editing characters, viewing live logs, and running TTS/VAD tests.
+
+## T33 - Vast.ai Deployment Script
+- [ ] Started
+- [ ] Tests Written
+- [ ] Code Written
+- [ ] Tests Passed
+- [ ] Documentation Written
+
+Description: Create a shell script to deploy the backend on Vast.ai including GPU setup and model installation.
+
+## T34 - Analytics Dashboard
+- [ ] Started
+- [ ] Tests Written
+- [ ] Code Written
+- [ ] Tests Passed
+- [ ] Documentation Written
+
+Description: Implement a dashboard showing call statistics such as calls per hour and most popular characters.
+
+## T35 - Local Audio Testing CLI
+- [ ] Started
+- [ ] Tests Written
+- [ ] Code Written
+- [ ] Tests Passed
+- [ ] Documentation Written
+
+Description: Provide a command-line tool (`simulate_call.py`) to test audio processing locally.
+
+## T36 - VAD Reliability Testing
+- [ ] Started
+- [ ] Tests Written
+- [ ] Code Written
+- [ ] Tests Passed
+- [ ] Documentation Written
+
+Description: Confirm that Pi-side voice activity detection reliably triggers recording.
+
+## T37 - Multi-Character Outbound Test
+- [ ] Started
+- [ ] Tests Written
+- [ ] Code Written
+- [ ] Tests Passed
+- [ ] Documentation Written
+
+Description: Test outbound calling with more than one character active at a time.
+
+## T38 - Name Recognition Persistence
+- [ ] Started
+- [ ] Tests Written
+- [ ] Code Written
+- [ ] Tests Passed
+- [ ] Documentation Written
+
+Description: Log recognized names and reuse them across multiple calls for continuity.
+
+## T39 - Network Failure Simulation
+- [ ] Started
+- [ ] Tests Written
+- [ ] Code Written
+- [ ] Tests Passed
+- [ ] Documentation Written
+
+Description: Simulate flaky network conditions to ensure LLM timeouts and related errors are properly handled.
