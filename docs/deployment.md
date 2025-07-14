@@ -1,13 +1,12 @@
 # Deployment Guide
 
-This project includes two helper scripts. `bootstrap.sh` can be downloaded on a
-clean Raspberry Pi to clone the repository and run the installer automatically.
+This project includes two helper scripts. `bootstrap.sh` can be run on a Debian or Ubuntu system to clone the repository and run the installer automatically.
 `install.sh` lives inside the repository and sets up dependencies and the
 systemd service.
 
 ## Step-by-step guide
 
-1. **Flash Raspberry Pi OS Lite** using Raspberry Pi Imager. Enable SSH so the
+1. **Install Debian or Ubuntu (e.g., Raspberry Pi OS Lite or Ubuntu 22.04)** using your preferred imaging tool. Enable SSH so the
    Pi can be accessed over the network.
 2. **Log in and download the bootstrap installer**:
 
