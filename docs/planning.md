@@ -62,7 +62,7 @@ This planning document defines the phases and milestones to guide development of
 - [x] Flask app with:
   - `/process-audio` – main AI loop
 - [x] Add Whisper + LLM pipeline
-- [ ] Add TTS return, give multiple options for TTS to user through gui, include Elevenlabs
+- [x] Add TTS return, give multiple options for TTS to user through gui, include Elevenlabs
 - [x] Secure endpoint for Pi use
 
 ---
@@ -74,7 +74,7 @@ This planning document defines the phases and milestones to guide development of
 - [x] Install all services via `install.sh`
 - [x] Add systemd service for startup
 - [ ] Optimize TTS playback latency
-- [ ] Final memory review logic (summarization tuning)
+ - [x] Final memory review logic (summarization tuning)
 - [ ] Final test: character recognition by AI
 
 ---

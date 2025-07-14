@@ -120,7 +120,7 @@ These endpoints are implemented in the small Flask server provided by
 2. Asterisk → `call_handler.py`
 3. Python records with VAD
 4. Audio sent to `/process-audio`
-5. Whisper → LLM → TTS (give multiple options for TTS to user through gui, include Elevenlabs)
+5. Whisper → LLM → TTS (supports `espeak`, `pyttsx3`, and an optional ElevenLabs backend selectable via the GUI)
 6. WAV sent back → played via `aplay`
 
 ## GUI Settings Panel

@@ -69,3 +69,27 @@ def test_synthesize_pyttsx3(monkeypatch):
     engine.save_to_file.assert_called_once()
     engine.runAndWait.assert_called_once()
     assert out == b"pyttsx3"
+
+
+def test_synthesize_elevenlabs(monkeypatch):
+    class Resp:
+        def __init__(self):
+            self.content = b"tts"
+
+        def raise_for_status(self):
+            pass
+
+    def post(url, json, headers):
+        assert "123" in url
+        assert json == {"text": "hello"}
+        assert headers["xi-api-key"] == "key"
+        return Resp()
+
+    monkeypatch.setattr(tts.requests, "post", post)
+    out = tts.synthesize(
+        "hello",
+        method="elevenlabs",
+        api_key="key",
+        voice_id="123",
+    )
+    assert out == b"tts"

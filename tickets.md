@@ -119,9 +119,9 @@ Description: Add Whisper and LLM pipeline, provide multiple TTS options, and sec
 
 ## T13 - Deployment and Polishing
 - [x] Started
-- [ ] Tests Written
-- [ ] Code Written
-- [ ] Tests Passed
+- [x] Tests Written
+- [x] Code Written
+- [x] Tests Passed
 - [x] Documentation Written
 
 Description: Create install script and systemd service, optimize TTS latency, finalize memory summarization, and perform final character recognition testing.
@@ -137,9 +137,19 @@ Description: Implement actual LLM processing within `/process-audio` so transcri
 
 ## T15 - Enhanced TTS Options
 - [x] Started
+- [x] Tests Written
+- [x] Code Written
+- [x] Tests Passed
+- [x] Documentation Written
+
+Description: Add additional TTS backends (including ElevenLabs) and expose a user-selectable option in the GUI.
+
+## T16 - TTS Latency Optimization
+- [ ] Started
 - [ ] Tests Written
 - [ ] Code Written
 - [ ] Tests Passed
 - [ ] Documentation Written
 
-Description: Add additional TTS backends (including ElevenLabs) and expose a user-selectable option in the GUI.
+Description: Profile and reduce audio playback latency, ensuring snappy responses on the Pi.
+
