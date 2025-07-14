@@ -190,3 +190,12 @@ Description: Validate that each AI personality consistently identifies themselve
 - [x] Documentation Written
 
 Description: Add bootstrap.sh that installs git, clones the repo and executes install.sh for one-command installation.
+
+## T20 - Project README
+- [x] Started
+- [ ] Tests Written
+- [x] Code Written
+- [x] Tests Passed
+- [x] Documentation Written
+
+Description: Create a standard README with overview, installation and usage instructions.
