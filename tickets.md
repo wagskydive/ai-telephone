@@ -199,3 +199,21 @@ Description: Add bootstrap.sh that installs git, clones the repo and executes in
 - [x] Documentation Written
 
 Description: Create a standard README with overview, installation and usage instructions.
+
+## T21 - Chatterbox Integration
+- [x] Started
+- [x] Tests Written
+- [x] Code Written
+- [x] Tests Passed
+- [x] Documentation Written
+
+Description: Add Chatterbox TTS backend with fallback handling.
+
+## T22 - Further Development Tasks
+- [ ] Started
+- [ ] Tests Written
+- [ ] Code Written
+- [ ] Tests Passed
+- [ ] Documentation Written
+
+Description: Begin implementing items listed in further_development.md.

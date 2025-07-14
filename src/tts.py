@@ -18,14 +18,17 @@ def synthesize(
     *,
     api_key: str | None = None,
     voice_id: str = "21m00Tcm4TlvDq8ikWAM",
+    base_url: str | None = None,
 ) -> bytes:
     """Synthesize ``text`` to WAV bytes using ``method``.
 
     Supported methods are ``dummy`` (return UTF‑8 bytes), ``espeak`` using the
-    ``espeak`` command, ``pyttsx3`` when the library is available, and
-    ``elevenlabs`` which calls the ElevenLabs API.  For ``elevenlabs`` the API
-    key is read from ``ELEVENLABS_API_KEY`` unless ``api_key`` is supplied, and
-    the ``voice_id`` can be overridden.
+    ``espeak`` command, ``pyttsx3`` when the library is available, ``chatterbox``
+    which posts to a remote Chatterbox server, and ``elevenlabs`` which calls
+    the ElevenLabs API.  For ``elevenlabs`` the API key is read from
+    ``ELEVENLABS_API_KEY`` unless ``api_key`` is supplied, and the ``voice_id``
+    can be overridden.  ``base_url`` overrides the default Chatterbox endpoint
+    from ``CHATTERBOX_URL``.
     """
 
     if method == "dummy":
@@ -42,6 +45,15 @@ def synthesize(
             engine.save_to_file(text, tmp.name)
             engine.runAndWait()
             return tmp.read()
+
+    if method == "chatterbox":
+        url = base_url or os.getenv("CHATTERBOX_URL", "http://localhost:7860/speak")
+        try:
+            resp = requests.post(url, json={"text": text})
+            resp.raise_for_status()
+            return resp.content
+        except Exception:
+            return synthesize(text, method="dummy")
 
     if method == "elevenlabs":
         key = api_key or os.getenv("ELEVENLABS_API_KEY")
