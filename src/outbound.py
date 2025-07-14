@@ -9,9 +9,18 @@ import logging
 from .personalities import Personality
 
 
-def select_personalities(personalities: Iterable[Personality], rand: Callable[[], float] = random.random) -> list[Personality]:
+def select_personalities(
+    personalities: Iterable[Personality],
+    rand: Callable[[], float] = random.random,
+) -> list[Personality]:
     """Return personalities chosen to place outbound calls."""
-    return [p for p in personalities if rand() < p.initiative]
+    selected = []
+    for p in personalities:
+        if not p.enabled:
+            continue
+        if rand() < p.initiative:
+            selected.append(p)
+    return selected
 
 
 def run_outbound(personalities: Iterable[Personality], originate: Callable[[int], None], rand: Callable[[], float] = random.random) -> None:

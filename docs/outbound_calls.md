@@ -10,3 +10,6 @@ from src.personalities import load_personalities
 personalities = load_personalities(Path('data/personalities.json'))
 run_outbound(personalities, originate=lambda ext: print(f'call {ext}'))
 ```
+
+Set ``enabled`` to ``false`` in ``personalities.json`` to temporarily exclude a
+character from outbound calls.

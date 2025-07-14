@@ -17,12 +17,18 @@ class Personality:
     initiative: float
     tagline: str
     prompt: str
+    enabled: bool = True
 
 
 def load_personalities(file_path: Path) -> list[Personality]:
     """Load personalities from a JSON file."""
     data = json.loads(file_path.read_text())
-    return [Personality(**entry) for entry in data]
+    personalities: list[Personality] = []
+    for entry in data:
+        if "enabled" not in entry:
+            entry["enabled"] = True
+        personalities.append(Personality(**entry))
+    return personalities
 
 
 def get_by_extension(personalities: list[Personality], extension: int) -> Personality:
