@@ -362,10 +362,19 @@ Description: Test outbound calling with more than one character active at a time
 Description: Log recognized names and reuse them across multiple calls for continuity.
 
 ## T39 - Network Failure Simulation
+- [x] Started
+- [x] Tests Written
+- [x] Code Written
+- [x] Tests Passed
+- [x] Documentation Written
+
+Description: Simulate flaky network conditions to ensure LLM timeouts and related errors are properly handled.
+
+## T40 - Field-Ready Release Polish
 - [ ] Started
 - [ ] Tests Written
 - [ ] Code Written
 - [ ] Tests Passed
 - [ ] Documentation Written
 
-Description: Simulate flaky network conditions to ensure LLM timeouts and related errors are properly handled.
+Description: Finalize documentation and cleanup for a field-ready release, ensuring installation steps and code examples are up to date.
