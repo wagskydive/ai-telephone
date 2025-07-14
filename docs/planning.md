@@ -63,7 +63,7 @@ This planning document defines the phases and milestones to guide development of
   - `/process-audio` – main AI loop
   - `/generate-situation` – scene builder
 - [ ] Add Whisper + LLM pipeline
-- [ ] Add TTS return
+- [ ] Add TTS return, give multiple options for TTS to user through gui, include Elevenlabs
 - [ ] Secure endpoint for Pi use
 
 ---
