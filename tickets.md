@@ -44,3 +44,12 @@ Description: Implement memory_logger.py to save per-character interaction logs a
 - [x] Documentation Written
 
 Description: Add situation_generator module and integrate it with call_handler to request call context from the LLM server.
+
+## T6 - Backend API Server
+- [x] Started
+- [x] Tests Written
+- [x] Code Written
+- [x] Tests Passed
+- [x] Documentation Written
+
+Description: Implement Flask backend API with `/process-audio` and `/generate-situation` endpoints.
