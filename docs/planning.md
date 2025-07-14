@@ -79,6 +79,21 @@ This planning document defines the phases and milestones to guide development of
 
 ---
 
+## Phase 7: Further Development
+**Goal:** Chatterbox integration
+
+### Tasks:
+- [ ] Complete all tasks in `chatterbox_integration.md`
+
+---
+
+## Phase 8: Further Development
+**Goal:** Debug, Evaluate, Add missing features and Polish
+
+### Tasks:
+- [ ] Complete all tasks in `further_development.md`
+
+
 ## Milestones
 
 | Milestone | Target Date       | Owner   | Status |
