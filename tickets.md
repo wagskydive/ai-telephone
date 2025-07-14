@@ -91,13 +91,22 @@ Description: Generate printable character cards from personalities.json for play
 Description: Implement an outbound call loop that selects characters based on their initiative score.
 
 ## T11 - Prompt Design and Greeting Logic
-- [ ] Started
-- [ ] Tests Written
-- [ ] Code Written
-- [ ] Tests Passed
-- [ ] Documentation Written
+- [x] Started
+- [x] Tests Written
+- [x] Code Written
+- [x] Tests Passed
+- [x] Documentation Written
 
 Description: Finalize prompt format and use the LLM to inject greeting mood and situations at call start.
+
+## T12a - API Key Security
+- [x] Started
+- [x] Tests Written
+- [x] Code Written
+- [x] Tests Passed
+- [x] Documentation Written
+
+Description: Require an ``X-API-Key`` header for API calls when configured.
 
 ## T12 - Backend Pipeline and Security Enhancements
 - [ ] Started

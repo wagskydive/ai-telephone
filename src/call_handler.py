@@ -1,4 +1,5 @@
 """Core handler for AI phone calls."""
+
 from __future__ import annotations
 
 from pathlib import Path
@@ -6,8 +7,9 @@ import requests
 
 from .audio_player import play_wav
 from .vad_recorder import record_until_silence
-from .memory_logger import log_interaction
+from .memory_logger import log_interaction, load_memory
 from .situation_generator import generate_situation
+from .prompt_builder import build_prompt
 
 
 def handle_call(
@@ -32,9 +34,16 @@ def handle_call(
     """
 
     situation: str | None = None
+    memory_snippets: list[str] = []
+    if memory_dir is not None:
+        memory = load_memory(memory_dir, personality_id)
+        memory_snippets = [m.get("summary", "") for m in memory[-2:]]
+
     if personality_prompt is not None:
         try:
-            situation = generate_situation(server_url, personality_id, [], personality_prompt)
+            situation = generate_situation(
+                server_url, personality_id, memory_snippets, personality_prompt
+            )
         except Exception:
             situation = None
 
@@ -45,6 +54,9 @@ def handle_call(
         data = {"character_id": personality_id}
         if situation:
             data["situation"] = situation
+        if personality_prompt is not None:
+            prompt = build_prompt(personality_prompt, memory_snippets, situation)
+            data["prompt"] = prompt
 
         response = requests.post(
             f"{server_url}/process-audio",
@@ -59,4 +71,11 @@ def handle_call(
     play_wav(response_path)
 
     if memory_dir is not None:
-        log_interaction(memory_dir, personality_id, caller_extension="unknown", summary="", name_guess="", quotes=[])
+        log_interaction(
+            memory_dir,
+            personality_id,
+            caller_extension="unknown",
+            summary="",
+            name_guess="",
+            quotes=[],
+        )
