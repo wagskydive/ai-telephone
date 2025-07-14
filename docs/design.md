@@ -85,7 +85,7 @@ These endpoints are implemented in the small Flask server provided by
   "extension": 701,
   "initiative": 0.9,
   "tagline": "Yell something and brace for chaos.",
-  "prompt": "You're a fearless, loud, overly confident ex-military skydiver..."
+  "prompt": "Your name is Captain Freefall. You're a fearless, loud, overly confident ex-military skydiver..."
 }
 ```
 - Initiative value determines chance of initiating outbound calls

@@ -174,11 +174,11 @@ Description: Profile and reduce audio playback latency, ensuring snappy response
 
 
 ## T18 - Character Recognition Testing
-- [ ] Started
-- [ ] Tests Written
-- [ ] Code Written
-- [ ] Tests Passed
-- [ ] Documentation Written
+- [x] Started
+- [x] Tests Written
+- [x] Code Written
+- [x] Tests Passed
+- [x] Documentation Written
 
 Description: Validate that each AI personality consistently identifies themselves during conversations.
 
@@ -210,10 +210,10 @@ Description: Create a standard README with overview, installation and usage inst
 Description: Add Chatterbox TTS backend with fallback handling.
 
 ## T22 - Further Development Tasks
-- [ ] Started
-- [ ] Tests Written
-- [ ] Code Written
-- [ ] Tests Passed
-- [ ] Documentation Written
+- [x] Started
+ - [ ] Tests Written
+ - [ ] Code Written
+ - [ ] Tests Passed
+ - [ ] Documentation Written
 
 Description: Begin implementing items listed in further_development.md.

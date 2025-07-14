@@ -75,7 +75,7 @@ This planning document defines the phases and milestones to guide development of
 - [x] Add systemd service for startup
  - [x] Optimize TTS playback latency
  - [x] Final memory review logic (summarization tuning)
-- [ ] Final test: character recognition by AI
+ - [x] Final test: character recognition by AI
 
 ---
 

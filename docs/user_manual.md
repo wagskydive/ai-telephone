@@ -7,6 +7,7 @@ This manual explains how to operate the AI Telephone once it is installed.
 2. Dial an extension between **701** and **705** to speak with a specific skydiving character.
 3. Dial **1000** to be connected with a random character.
 4. Speak naturally after the beep. Pause to let the AI respond.
+5. Each AI will introduce themselves by name at the start of the call.
 
 ## Receiving Calls
 Characters may place calls automatically when the outbound call loop is running.
@@ -23,7 +24,7 @@ Each character keeps a log of conversations. Logs are stored in
 ## Troubleshooting
 - If no audio plays, ensure speakers or the handset are connected and `aplay`
   works from the command line.
-- Restart the backend service with:
+ - Restart the backend service with:
   ```bash
   sudo systemctl restart ai-telephone.service
   ```
