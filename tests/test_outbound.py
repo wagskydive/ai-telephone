@@ -66,3 +66,12 @@ def test_outbound_loop(monkeypatch):
     except KeyboardInterrupt:
         pass
     assert calls == [1]
+
+def test_run_outbound_multiple():
+    pers = [
+        Personality("a", "A", 1, 0.9, "t", "p"),
+        Personality("b", "B", 2, 0.9, "t", "p"),
+    ]
+    calls = []
+    run_outbound(pers, originate=lambda ext: calls.append(ext), rand=lambda: 0.1)
+    assert set(calls) == {1, 2}
