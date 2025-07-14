@@ -1,5 +1,8 @@
 """Simple audio playback utility."""
+from __future__ import annotations
+
 from pathlib import Path
+import subprocess
 
 
 def play_wav(file_path: Path) -> None:
@@ -7,8 +10,7 @@ def play_wav(file_path: Path) -> None:
 
     Parameters
     ----------
-    file_path: Path
+    file_path:
         Path to the WAV file to play.
     """
-    # TODO: call `aplay` or similar
-    pass
+    subprocess.run(["aplay", str(file_path)], check=False)

@@ -31,6 +31,10 @@ This project connects vintage analog telephones to AI personalities via a Raspbe
   - Manages VAD recording loop
   - Sends audio to LLM backend
   - Receives and plays AI response
+- **vad_recorder.py**
+  - Uses `sounddevice` and `webrtcvad` to capture speech
+- **audio_player.py**
+  - Plays WAV responses via the system `aplay` command
 
 - **memory_logger.py**
   - Maintains a global log per character
