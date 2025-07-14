@@ -1,0 +1,43 @@
+"""Utility for writing call interaction logs."""
+from __future__ import annotations
+
+import json
+from datetime import datetime
+from pathlib import Path
+from typing import List, Dict
+
+
+def log_interaction(
+    memory_dir: Path,
+    personality_id: str,
+    *,
+    caller_extension: str,
+    summary: str,
+    name_guess: str,
+    quotes: List[str],
+) -> None:
+    """Append an interaction entry for the given personality."""
+    memory_dir.mkdir(parents=True, exist_ok=True)
+    file_path = memory_dir / f"{personality_id}.json"
+    if file_path.exists():
+        data: List[Dict] = json.loads(file_path.read_text())
+    else:
+        data = []
+    data.append(
+        {
+            "timestamp": datetime.utcnow().isoformat() + "Z",
+            "caller_extension": caller_extension,
+            "name_guess": name_guess,
+            "summary": summary,
+            "quotes": quotes,
+        }
+    )
+    file_path.write_text(json.dumps(data, indent=2))
+
+
+def load_memory(memory_dir: Path, personality_id: str) -> List[Dict]:
+    """Return saved memory entries for ``personality_id``."""
+    file_path = memory_dir / f"{personality_id}.json"
+    if file_path.exists():
+        return json.loads(file_path.read_text())
+    return []

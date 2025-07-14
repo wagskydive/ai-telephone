@@ -37,7 +37,7 @@ This project connects vintage analog telephones to AI personalities via a Raspbe
   - Plays WAV responses via the system `aplay` command
 
 - **memory_logger.py**
-  - Maintains a global log per character
+  - Maintains a per-character JSON log in ``memory/``
   - Summarizes conversations
   - Extracts caller name if spoken
 
@@ -70,7 +70,7 @@ This project connects vintage analog telephones to AI personalities via a Raspbe
   - Stores interaction to persistent character memory log
 
 ## Personality Design
-- Characters defined in `personalities.json`:
+- Characters defined in `data/personalities.json` and loaded by ``src.personalities``:
 ```json
 {
   "id": "captain_freefall",

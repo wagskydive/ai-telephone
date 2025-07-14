@@ -6,9 +6,10 @@ import requests
 
 from .audio_player import play_wav
 from .vad_recorder import record_until_silence
+from .memory_logger import log_interaction
 
 
-def handle_call(temp_dir: Path, server_url: str) -> None:
+def handle_call(temp_dir: Path, server_url: str, personality_id: str, memory_dir: Path | None = None) -> None:
     """Record caller audio, send it for processing, and play the response.
 
     Parameters
@@ -17,6 +18,8 @@ def handle_call(temp_dir: Path, server_url: str) -> None:
         Directory used for temporary audio files.
     server_url:
         Base URL of the LLM processing server.
+    memory_dir:
+        Optional directory for storing interaction logs.
     """
 
     recorded = temp_dir / "caller.wav"
@@ -26,6 +29,7 @@ def handle_call(temp_dir: Path, server_url: str) -> None:
         response = requests.post(
             f"{server_url}/process-audio",
             files={"audio_file": fh},
+            data={"character_id": personality_id},
         )
         response.raise_for_status()
 
@@ -33,3 +37,6 @@ def handle_call(temp_dir: Path, server_url: str) -> None:
     response_path.write_bytes(response.content)
 
     play_wav(response_path)
+
+    if memory_dir is not None:
+        log_interaction(memory_dir, personality_id, caller_extension="unknown", summary="", name_guess="", quotes=[])
