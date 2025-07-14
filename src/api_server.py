@@ -7,6 +7,7 @@ import io
 
 from .stt import transcribe
 from .tts import synthesize
+from .llm import generate_response
 
 
 def create_app(api_key: str | None = None, allowed_ips: list[str] | None = None) -> Flask:
@@ -21,12 +22,14 @@ def create_app(api_key: str | None = None, allowed_ips: list[str] | None = None)
 
     @app.post("/process-audio")
     def process_audio():
-        """Transcribe uploaded audio and return synthesized response."""
+        """Transcribe audio, send it to the LLM, and return synthesized speech."""
         check_key()
         file = request.files.get("audio_file")
         audio = file.read() if file else b""
+        prompt = request.form.get("prompt")
         text = transcribe(audio)
-        response_audio = synthesize(text)
+        reply = generate_response(text, prompt)
+        response_audio = synthesize(reply)
         return send_file(
             io.BytesIO(response_audio),
             mimetype="audio/wav",

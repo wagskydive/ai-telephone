@@ -9,7 +9,11 @@ def test_process_audio():
     client = app.test_client()
     with mock.patch(
         "src.api_server.transcribe", return_value="hello"
-    ) as tr, mock.patch("src.api_server.synthesize", return_value=b"hi") as syn:
+    ) as tr, mock.patch(
+        "src.api_server.generate_response", return_value="reply"
+    ) as llm, mock.patch(
+        "src.api_server.synthesize", return_value=b"hi"
+    ) as syn:
         response = client.post(
             "/process-audio",
             data={"audio_file": (io.BytesIO(b"data"), "in.wav")},
@@ -17,7 +21,8 @@ def test_process_audio():
         assert response.status_code == 200
         assert response.data == b"hi"
         tr.assert_called_once()
-        syn.assert_called_once_with("hello")
+        llm.assert_called_once_with("hello", None)
+        syn.assert_called_once_with("reply")
 
 
 def test_generate_situation():
@@ -31,21 +36,22 @@ def test_generate_situation():
 def test_api_key_required():
     app = create_app(api_key="tok")
     client = app.test_client()
-    with mock.patch("src.api_server.transcribe", return_value="hi") as tr, mock.patch(
-        "src.api_server.synthesize", return_value=b"out"
-    ):
+    with mock.patch("src.api_server.transcribe", return_value="hi") as tr, \
+         mock.patch("src.api_server.generate_response", return_value="r") as llm, \
+         mock.patch("src.api_server.synthesize", return_value=b"out"):
         unauthorized = client.post("/process-audio")
         assert unauthorized.status_code == 401
         authorized = client.post("/process-audio", headers={"X-API-Key": "tok"})
         assert authorized.status_code == 200
+        llm.assert_called_once()
 
 
 def test_allowed_ips():
     app = create_app(allowed_ips=["1.2.3.4"])
     client = app.test_client()
-    with mock.patch("src.api_server.transcribe", return_value="hi"), mock.patch(
-        "src.api_server.synthesize", return_value=b"out"
-    ):
+    with mock.patch("src.api_server.transcribe", return_value="hi"), \
+         mock.patch("src.api_server.generate_response", return_value="r"), \
+         mock.patch("src.api_server.synthesize", return_value=b"out"):
         disallowed = client.post("/process-audio", environ_overrides={"REMOTE_ADDR": "2.2.2.2"})
         assert disallowed.status_code == 403
         allowed = client.post(
