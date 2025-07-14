@@ -1,6 +1,11 @@
 from pathlib import Path
 
-from src.memory_logger import log_interaction, load_memory, summarize_memory
+from src.memory_logger import (
+    log_interaction,
+    load_memory,
+    summarize_memory,
+    guess_name,
+)
 
 
 def test_log_and_load(tmp_path):
@@ -33,3 +38,23 @@ def test_log_pruning(tmp_path):
     data = load_memory(memory_dir, "p")
     # Should keep only last three entries
     assert [d["summary"] for d in data] == ["2", "3", "4"]
+
+
+def test_guess_name():
+    assert guess_name("my name is Bob") == "Bob"
+    assert guess_name("this is alice") == "Alice"
+    assert guess_name("no name") == ""
+
+
+def test_log_interaction_guess(tmp_path):
+    memory_dir = tmp_path / "m"
+    log_interaction(
+        memory_dir,
+        "c",
+        caller_extension="1",
+        summary="my name is Claire",
+        name_guess="",
+        quotes=[],
+    )
+    data = load_memory(memory_dir, "c")
+    assert data[0]["name_guess"] == "Claire"

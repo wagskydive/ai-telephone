@@ -13,3 +13,8 @@ run_outbound(personalities, originate=lambda ext: print(f'call {ext}'))
 
 Set ``enabled`` to ``false`` in ``personalities.json`` to temporarily exclude a
 character from outbound calls.
+
+``run_outbound`` also accepts an optional ``call_history`` list which records
+recently dialed extensions. Any personality whose extension appears in this
+history is skipped so repeated calls are avoided. The history is automatically
+trimmed to ``history_size`` entries.

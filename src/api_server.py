@@ -28,7 +28,9 @@ def create_app(api_key: str | None = None, allowed_ips: list[str] | None = None)
         """Transcribe audio, send it to the LLM, and return synthesized speech."""
         check_key()
         file = request.files.get("audio_file")
-        audio = file.read() if file else b""
+        if not file:
+            return ("", 400)
+        audio = file.read()
         prompt = request.form.get("prompt")
         try:
             text = transcribe(audio)
@@ -36,7 +38,11 @@ def create_app(api_key: str | None = None, allowed_ips: list[str] | None = None)
             response_audio = synthesize(reply)
         except Exception:  # pragma: no cover - log unexpected failures
             logger.exception("processing failed")
-            return ("", 500)
+            fallback = synthesize(
+                "Sorry, something went wrong.",
+                method="dummy",
+            )
+            return send_file(io.BytesIO(fallback), mimetype="audio/wav")
         return send_file(
             io.BytesIO(response_audio),
             mimetype="audio/wav",
@@ -49,7 +55,9 @@ def create_app(api_key: str | None = None, allowed_ips: list[str] | None = None)
         """Send provided text to the LLM and return synthesized speech."""
         check_key()
         data = request.get_json(force=True, silent=True) or {}
-        text = data.get("text", "")
+        text = data.get("text")
+        if not text:
+            return ("", 400)
         prompt = data.get("prompt")
         try:
             reply = generate_response(text, prompt)

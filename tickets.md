@@ -219,46 +219,46 @@ Description: Add Chatterbox TTS backend with fallback handling.
 Description: Begin implementing items listed in further_development.md.
 
 ## T23 - Outbound Call History Check
-- [ ] Started
-- [ ] Tests Written
-- [ ] Code Written
-- [ ] Tests Passed
-- [ ] Documentation Written
+- [x] Started
+- [x] Tests Written
+- [x] Code Written
+- [x] Tests Passed
+- [x] Documentation Written
 
 Description: Prevent characters from repeatedly calling the same extension by keeping a short call history and skipping recently dialed numbers.
 ## T24 - Voice Pipeline Fallback Handling
-- [ ] Started
-- [ ] Tests Written
-- [ ] Code Written
-- [ ] Tests Passed
-- [ ] Documentation Written
+- [x] Started
+- [x] Tests Written
+- [x] Code Written
+- [x] Tests Passed
+- [x] Documentation Written
 
 Description: Add fallback handling when Whisper, LLM, or TTS components fail so calls continue gracefully.
 
 ## T25 - Process Text Endpoint
-- [ ] Started
-- [ ] Tests Written
-- [ ] Code Written
-- [ ] Tests Passed
-- [ ] Documentation Written
+- [x] Started
+- [x] Tests Written
+- [x] Code Written
+- [x] Tests Passed
+- [x] Documentation Written
 
 Description: Add `/process-text` endpoint to the API server to support Pi-side Whisper and text-only input.
 
 ## T26 - Robust Recording and LLM Requests
-- [ ] Started
-- [ ] Tests Written
-- [ ] Code Written
-- [ ] Tests Passed
-- [ ] Documentation Written
+- [x] Started
+- [x] Tests Written
+- [x] Code Written
+- [x] Tests Passed
+- [x] Documentation Written
 
 Description: Wrap `record_until_silence()` and LLM requests in `try/except` blocks with proper logging.
 
 ## T27 - Improved Logging
-- [ ] Started
-- [ ] Tests Written
-- [ ] Code Written
-- [ ] Tests Passed
-- [ ] Documentation Written
+- [x] Started
+- [x] Tests Written
+- [x] Code Written
+- [x] Tests Passed
+- [x] Documentation Written
 
 Description: Increase logging detail in `call_handler.py` and `api_server.py` for easier debugging.
 
@@ -281,20 +281,20 @@ Description: Add ability to pause or disable individual personalities from makin
 Description: Expand `log_interaction()` to prune logs after a set number of entries or rotate log files.
 
 ## T30 - Name Guessing Logic
-- [ ] Started
-- [ ] Tests Written
-- [ ] Code Written
-- [ ] Tests Passed
-- [ ] Documentation Written
+- [x] Started
+- [x] Tests Written
+- [x] Code Written
+- [x] Tests Passed
+- [x] Documentation Written
 
 Description: Add inferred name guessing in the prompt and summary pipeline to personalize interactions.
 
 ## T31 - API Error Handling Improvements
-- [ ] Started
-- [ ] Tests Written
-- [ ] Code Written
-- [ ] Tests Passed
-- [ ] Documentation Written
+- [x] Started
+- [x] Tests Written
+- [x] Code Written
+- [x] Tests Passed
+- [x] Documentation Written
 
 Description: Improve error handling in the API server for malformed audio or missing fields.
 

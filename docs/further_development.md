@@ -6,22 +6,22 @@ This document outlines prioritized enhancements and cleanup tasks to improve and
 
 ## 🥇 High Priority
 
-- [ ] ✅ Add fallback handling for Whisper/LLM/TTS failure
-- [ ] ✅ Implement `/generate-situation` endpoint server-side using `situation_generator.py`
-- [ ] ✅ Add `/process-text` endpoint to support Pi-side Whisper and text-only input
-- [ ] ✅ Wrap `record_until_silence()` and LLM requests in `try/except` with logging
-- [ ] ✅ Add periodic `run_outbound()` loop for autonomous character calls
-- [ ] ✅ Improve logging throughout (`call_handler.py`, `api_server.py`)
+- [x] ✅ Add fallback handling for Whisper/LLM/TTS failure
+- [x] ✅ Implement `/generate-situation` endpoint server-side using `situation_generator.py`
+- [x] ✅ Add `/process-text` endpoint to support Pi-side Whisper and text-only input
+- [x] ✅ Wrap `record_until_silence()` and LLM requests in `try/except` with logging
+- [x] ✅ Add periodic `run_outbound()` loop for autonomous character calls
+- [x] ✅ Improve logging throughout (`call_handler.py`, `api_server.py`)
 
 ---
 
 ## 🥈 Medium Priority
 
-- [ ] 🔄 Add history check to prevent characters calling same extension too often
+- [x] 🔄 Add history check to prevent characters calling same extension too often
 - [x] 🔄 Add ability to pause or disable individual personalities from calling
 - [x] 🔄 Expand `log_interaction()` to prune after N entries or rotate logs
-- [ ] 🔄 Add inferred name guessing logic to prompt/summary pipeline
-- [ ] 🔄 Improve error handling in API server (e.g. malformed audio, missing fields)
+- [x] 🔄 Add inferred name guessing logic to prompt/summary pipeline
+- [x] 🔄 Improve error handling in API server (e.g. malformed audio, missing fields)
 
 ---
 

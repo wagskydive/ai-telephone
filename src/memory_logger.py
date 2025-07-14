@@ -5,7 +5,21 @@ import json
 from datetime import datetime
 from pathlib import Path
 from typing import List, Dict
+import re
 
+
+def guess_name(text: str) -> str:
+    """Return a simple best-guess name from ``text``."""
+    patterns = [
+        r"my name is ([A-Za-z']+)",
+        r"i'?m ([A-Za-z']+)",
+        r"this is ([A-Za-z']+)",
+    ]
+    for pat in patterns:
+        m = re.search(pat, text, re.IGNORECASE)
+        if m:
+            return m.group(1).capitalize()
+    return ""
 
 def log_interaction(
     memory_dir: Path,
@@ -16,7 +30,7 @@ def log_interaction(
     name_guess: str,
     quotes: List[str],
     max_entries: int | None = None,
-) -> None:
+    ) -> None:
     """Append an interaction entry for the given personality.
 
     When ``max_entries`` is provided, only the most recent entries up to that
@@ -28,6 +42,9 @@ def log_interaction(
         data: List[Dict] = json.loads(file_path.read_text())
     else:
         data = []
+    if not name_guess:
+        name_guess = guess_name(" ".join([summary] + quotes))
+
     data.append(
         {
             "timestamp": datetime.utcnow().isoformat() + "Z",
