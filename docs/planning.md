@@ -84,6 +84,7 @@ This planning document defines the phases and milestones to guide development of
 
 ### Tasks:
 - [ ] Complete all tasks in `chatterbox_integration.md`
+- [x] Implement Chatterbox TTS backend with fallback handling
 
 ---
 

@@ -91,6 +91,6 @@ def process_text():
 ## 🧩 Next Steps
 
 - [ ] Deploy Chatterbox on your Vast.ai Ollama server
-- [ ] Update `tts.py` in your Flask backend
-- [ ] Add fallback handling if Chatterbox is offline
+- [x] Update `tts.py` in your Flask backend
+- [x] Add fallback handling if Chatterbox is offline
 - [ ] Test TTS latency and tune voice settings

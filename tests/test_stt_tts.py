@@ -1,4 +1,5 @@
 from unittest import mock
+import requests
 
 from src import stt, tts
 
@@ -93,3 +94,30 @@ def test_synthesize_elevenlabs(monkeypatch):
         voice_id="123",
     )
     assert out == b"tts"
+
+
+def test_synthesize_chatterbox(monkeypatch):
+    class Resp:
+        def __init__(self):
+            self.content = b"cb"
+
+        def raise_for_status(self):
+            pass
+
+    def post(url, json):
+        assert url == "http://host/speak"
+        assert json == {"text": "hi"}
+        return Resp()
+
+    monkeypatch.setattr(tts.requests, "post", post)
+    out = tts.synthesize("hi", method="chatterbox", base_url="http://host/speak")
+    assert out == b"cb"
+
+
+def test_synthesize_chatterbox_fallback(monkeypatch):
+    def post(url, json):
+        raise requests.RequestException()
+
+    monkeypatch.setattr(tts.requests, "post", post)
+    out = tts.synthesize("hello", method="chatterbox")
+    assert out == b"hello"
