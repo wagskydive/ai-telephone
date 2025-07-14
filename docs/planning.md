@@ -24,7 +24,7 @@ This planning document defines the phases and milestones to guide development of
 - [x] `call_handler.py`: core handler script
 - [x] `vad_recorder.py`: record speech naturally
 - [x] `audio_player.py`: play WAV responses
-- [ ] Add Whisper + TTS (local or remote)
+- [x] Add Whisper + TTS (local or remote)
 - [x] Create `/process-audio` endpoint (Flask or FastAPI)
 - [x] Test basic call → AI → response cycle
 
@@ -37,8 +37,8 @@ This planning document defines the phases and milestones to guide development of
 - [x] Define character schema (`personalities.json`)
 - [x] Add unique extensions (701–705)
 - [x] Add random personality logic for ext 1000
-- [ ] Print-ready character card generation
-- [ ] Add initiative-based outbound call loop
+- [x] Print-ready character card generation
+- [x] Add initiative-based outbound call loop
 - [x] Integrate `memory_logger.py`
 - [x] Save memory log per character
 
@@ -48,10 +48,10 @@ This planning document defines the phases and milestones to guide development of
 **Goal:** Add LLM-generated call context and realism
 
 ### Tasks:
-- [ ] Design prompt format
+- [x] Design prompt format
 - [x] Implement `situation_generator.py`
 - [x] Add call-start context logic to `call_handler.py`
-- [ ] Use LLM to inject greeting mood/situation
+- [x] Use LLM to inject greeting mood/situation
 
 ---
 
@@ -64,7 +64,7 @@ This planning document defines the phases and milestones to guide development of
   - `/generate-situation` – scene builder
 - [ ] Add Whisper + LLM pipeline
 - [ ] Add TTS return, give multiple options for TTS to user through gui, include Elevenlabs
-- [ ] Secure endpoint for Pi use
+- [x] Secure endpoint for Pi use
 
 ---
 
@@ -72,8 +72,8 @@ This planning document defines the phases and milestones to guide development of
 **Goal:** Package and test final experience
 
 ### Tasks:
-- [ ] Install all services via `install.sh`
-- [ ] Add systemd service for startup
+- [x] Install all services via `install.sh`
+- [x] Add systemd service for startup
 - [ ] Optimize TTS playback latency
 - [ ] Final memory review logic (summarization tuning)
 - [ ] Final test: character recognition by AI
@@ -84,8 +84,8 @@ This planning document defines the phases and milestones to guide development of
 
 | Milestone | Target Date       | Owner   | Status |
 |----------|-------------------|---------|--------|
-| Basic phone-to-AI call works | Week 1            | Lead Dev | 🔲     |
-| Personalities + memory       | Week 2            | AI Dev   | 🔲     |
-| Situation-aware characters   | Week 3            | Prompt Team | 🔲 |
-| Fully autonomous call loop   | Week 4            | System Dev | 🔲 |
-| Field-ready release          | Week 5            | Team     | 🔲     |
+| Basic phone-to-AI call works | Week 1            | Lead Dev | ✅ |
+| Personalities + memory       | Week 2            | AI Dev   | ✅ |
+| Situation-aware characters   | Week 3            | Prompt Team | ✅ |
+| Fully autonomous call loop   | Week 4            | System Dev | ✅ |
+| Field-ready release          | Week 5            | Team     | 🔲 |
