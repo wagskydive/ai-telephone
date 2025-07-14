@@ -263,20 +263,20 @@ Description: Wrap `record_until_silence()` and LLM requests in `try/except` bloc
 Description: Increase logging detail in `call_handler.py` and `api_server.py` for easier debugging.
 
 ## T28 - Personality Pause/Disable
-- [ ] Started
-- [ ] Tests Written
-- [ ] Code Written
-- [ ] Tests Passed
-- [ ] Documentation Written
+- [x] Started
+- [x] Tests Written
+- [x] Code Written
+- [x] Tests Passed
+- [x] Documentation Written
 
 Description: Add ability to pause or disable individual personalities from making outbound calls.
 
 ## T29 - Log Pruning
-- [ ] Started
-- [ ] Tests Written
-- [ ] Code Written
-- [ ] Tests Passed
-- [ ] Documentation Written
+- [x] Started
+- [x] Tests Written
+- [x] Code Written
+- [x] Tests Passed
+- [x] Documentation Written
 
 Description: Expand `log_interaction()` to prune logs after a set number of entries or rotate log files.
 

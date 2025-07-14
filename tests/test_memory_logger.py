@@ -15,3 +15,21 @@ def test_log_and_load(tmp_path):
     assert summarize_memory(data) == "hi; bye"
     # limit should restrict entries
     assert summarize_memory(data, limit=1) == "bye"
+
+
+def test_log_pruning(tmp_path):
+    memory_dir = tmp_path / "mem"
+    for i in range(5):
+        log_interaction(
+            memory_dir,
+            "p",
+            caller_extension=str(i),
+            summary=str(i),
+            name_guess="",
+            quotes=[],
+            max_entries=3,
+        )
+
+    data = load_memory(memory_dir, "p")
+    # Should keep only last three entries
+    assert [d["summary"] for d in data] == ["2", "3", "4"]

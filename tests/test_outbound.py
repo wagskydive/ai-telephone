@@ -9,6 +9,15 @@ def test_select_personalities():
     assert selected == [pers[0]]
 
 
+def test_disabled_personalities():
+    pers = [
+        Personality("a", "A", 1, 0.9, "t", "p", enabled=False),
+        Personality("b", "B", 2, 0.9, "t", "p"),
+    ]
+    selected = select_personalities(pers, rand=lambda: 0.1)
+    assert selected == [pers[1]]
+
+
 def test_run_outbound():
     pers = [Personality("a", "A", 1, 0.9, "t", "p")]
     calls = []

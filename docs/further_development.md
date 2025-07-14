@@ -18,8 +18,8 @@ This document outlines prioritized enhancements and cleanup tasks to improve and
 ## 🥈 Medium Priority
 
 - [ ] 🔄 Add history check to prevent characters calling same extension too often
-- [ ] 🔄 Add ability to pause or disable individual personalities from calling
-- [ ] 🔄 Expand `log_interaction()` to prune after N entries or rotate logs
+- [x] 🔄 Add ability to pause or disable individual personalities from calling
+- [x] 🔄 Expand `log_interaction()` to prune after N entries or rotate logs
 - [ ] 🔄 Add inferred name guessing logic to prompt/summary pipeline
 - [ ] 🔄 Improve error handling in API server (e.g. malformed audio, missing fields)
 

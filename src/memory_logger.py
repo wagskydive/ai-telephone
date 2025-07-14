@@ -15,8 +15,13 @@ def log_interaction(
     summary: str,
     name_guess: str,
     quotes: List[str],
+    max_entries: int | None = None,
 ) -> None:
-    """Append an interaction entry for the given personality."""
+    """Append an interaction entry for the given personality.
+
+    When ``max_entries`` is provided, only the most recent entries up to that
+    limit are retained on disk.
+    """
     memory_dir.mkdir(parents=True, exist_ok=True)
     file_path = memory_dir / f"{personality_id}.json"
     if file_path.exists():
@@ -32,6 +37,8 @@ def log_interaction(
             "quotes": quotes,
         }
     )
+    if max_entries is not None and len(data) > max_entries:
+        data = data[-max_entries:]
     file_path.write_text(json.dumps(data, indent=2))
 
 
