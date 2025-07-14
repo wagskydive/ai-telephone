@@ -51,6 +51,7 @@ def handle_call(
             situation = None
 
     recorded = temp_dir / "caller.wav"
+    logger.info("call started for %s", personality_id)
     try:
         record_until_silence(recorded)
     except Exception:  # pragma: no cover - log failure
@@ -79,7 +80,11 @@ def handle_call(
     response_path = temp_dir / "response.wav"
     response_path.write_bytes(response.content)
 
-    play_wav(response_path)
+    try:
+        play_wav(response_path)
+    except Exception:  # pragma: no cover - log failure
+        logger.exception("playback failed")
+        return
 
     if memory_dir is not None:
         log_interaction(
@@ -90,3 +95,4 @@ def handle_call(
             name_guess="",
             quotes=[],
         )
+    logger.info("call finished for %s", personality_id)

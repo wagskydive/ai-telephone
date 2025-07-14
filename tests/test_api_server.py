@@ -25,6 +25,27 @@ def test_process_audio():
         syn.assert_called_once_with("reply")
 
 
+def test_process_audio_failure():
+    app = create_app()
+    client = app.test_client()
+    with mock.patch("src.api_server.transcribe", side_effect=RuntimeError), \
+         mock.patch("src.api_server.synthesize", return_value=b"fallback") as syn:
+        resp = client.post(
+            "/process-audio",
+            data={"audio_file": (io.BytesIO(b"data"), "in.wav")},
+        )
+        assert resp.status_code == 200
+        assert resp.data == b"fallback"
+        syn.assert_called()
+
+
+def test_process_audio_missing():
+    app = create_app()
+    client = app.test_client()
+    resp = client.post("/process-audio")
+    assert resp.status_code == 400
+
+
 def test_generate_situation():
     app = create_app()
     client = app.test_client()
@@ -62,6 +83,13 @@ def test_process_text():
         syn.assert_called_once_with("r")
 
 
+def test_process_text_missing():
+    app = create_app()
+    client = app.test_client()
+    resp = client.post("/process-text", json={})
+    assert resp.status_code == 400
+
+
 def test_api_key_required():
     app = create_app(api_key="tok")
     client = app.test_client()
@@ -70,7 +98,11 @@ def test_api_key_required():
          mock.patch("src.api_server.synthesize", return_value=b"out"):
         unauthorized = client.post("/process-audio")
         assert unauthorized.status_code == 401
-        authorized = client.post("/process-audio", headers={"X-API-Key": "tok"})
+        authorized = client.post(
+            "/process-audio",
+            headers={"X-API-Key": "tok"},
+            data={"audio_file": (io.BytesIO(b"a"), "in.wav")},
+        )
         assert authorized.status_code == 200
         llm.assert_called_once()
 
@@ -86,5 +118,6 @@ def test_allowed_ips():
         allowed = client.post(
             "/process-audio",
             environ_overrides={"REMOTE_ADDR": "1.2.3.4"},
+            data={"audio_file": (io.BytesIO(b"a"), "in.wav")},
         )
         assert allowed.status_code == 200

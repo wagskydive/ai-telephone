@@ -25,6 +25,24 @@ def test_run_outbound():
     assert calls == [1]
 
 
+def test_run_outbound_history():
+    pers = [
+        Personality("a", "A", 1, 0.9, "t", "p"),
+        Personality("b", "B", 2, 0.9, "t", "p"),
+    ]
+    calls = []
+    history: list[int] = [1]
+    run_outbound(
+        pers,
+        originate=lambda ext: calls.append(ext),
+        rand=lambda: 0.1,
+        call_history=history,
+        history_size=2,
+    )
+    assert calls == [2]
+    assert history == [1, 2]
+
+
 def test_outbound_loop(monkeypatch):
     pers = [Personality("a", "A", 1, 0.9, "t", "p")]
     calls = []
@@ -43,7 +61,8 @@ def test_outbound_loop(monkeypatch):
             originate=lambda ext: calls.append(ext),
             interval=0,
             rand=lambda: 0.1,
+            history_size=1,
         )
     except KeyboardInterrupt:
         pass
-    assert calls == [1, 1]
+    assert calls == [1]
