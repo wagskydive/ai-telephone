@@ -68,6 +68,9 @@ This project connects vintage analog telephones to AI personalities via a Raspbe
   - `POST`
   - Request: `{ character_id, caller_extension, name_guess, summary, quotes }`
   - Stores interaction to persistent character memory log
+  
+These endpoints are implemented in the small Flask server provided by
+``src.api_server.create_app``.
 
 ## Personality Design
 - Characters defined in `data/personalities.json` and loaded by ``src.personalities``:
