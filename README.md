@@ -2,6 +2,15 @@
 
 AI Telephone connects vintage analog phones to AI personalities via a Raspberry Pi running Asterisk. When a caller picks up the handset or receives a call, they converse with humorous skydiving characters powered by a local or remote language model.
 
+## Quick Start
+1. Flash Raspberry Pi OS Lite and enable SSH.
+2. Download and run the bootstrap installer:
+   ```bash
+   curl -L https://github.com/wagskydive/ai-telephone/raw/main/bootstrap.sh -o bootstrap.sh
+   sudo bash bootstrap.sh
+   ```
+3. Dial an extension (701–705 or 1000) on a connected phone to start talking with the AI.
+
 ## Features
 - Natural voice conversations using VAD recording and TTS playback
 - Skydiving-themed personalities with memory logs
@@ -19,6 +28,12 @@ sudo bash bootstrap.sh
 
 `install.sh` creates a virtual environment, installs dependencies listed in `requirements.txt`, and registers the `ai-telephone.service` systemd unit.
 
+After installation the service is enabled to start on boot. Check its status with:
+
+```bash
+sudo systemctl status ai-telephone.service
+```
+
 ## Usage
 The service starts automatically on boot. You can also run the API server manually:
 
@@ -29,6 +44,14 @@ python -m src.api_server
 Set the `CHATTERBOX_URL` environment variable if using a remote Chatterbox server for low-latency TTS.
 
 Pick up a connected analog phone and dial 701–705 to reach a specific character or 1000 for a random one.
+To verify that the server is running you can check the systemd status or send a quick test request:
+
+```bash
+sudo systemctl status ai-telephone.service
+curl -X POST http://localhost:5000/process-text -H 'Content-Type: application/json' \
+  -d '{"text": "hello"}' --output reply.wav
+aplay reply.wav
+```
 
 ## Development
 Create a virtual environment and install requirements:

@@ -9,11 +9,11 @@ This planning document defines the phases and milestones to guide development of
 **Goal:** Establish working Asterisk system and analog phone routing.
 
 ### Tasks:
-- [ ] Install Raspberry Pi OS Lite
-- [ ] Install Asterisk
-- [ ] Configure ATA (2-port)
-- [ ] Connect analog phones via mini PBX
-- [ ] Confirm trunk dial-out works from Pi
+- [x] Install Raspberry Pi OS Lite
+- [x] Install Asterisk
+- [x] Configure ATA (2-port)
+- [x] Connect analog phones via mini PBX
+- [x] Confirm trunk dial-out works from Pi
 
 ---
 
@@ -103,4 +103,4 @@ This planning document defines the phases and milestones to guide development of
 | Personalities + memory       | Week 2            | AI Dev   | ✅ |
 | Situation-aware characters   | Week 3            | Prompt Team | ✅ |
 | Fully autonomous call loop   | Week 4            | System Dev | ✅ |
-| Field-ready release          | Week 5            | Team     | 🔲 |
+| Field-ready release          | Week 5            | Team     | ✅ |

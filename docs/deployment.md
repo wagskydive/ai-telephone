@@ -28,3 +28,8 @@ systemd service.
    ```
 
 After these steps the backend API will run automatically on boot.
+Check the service status with `sudo systemctl status ai-telephone.service`. Logs
+can be viewed using `journalctl -u ai-telephone.service`.
+
+If your TTS server runs remotely, set the `CHATTERBOX_URL` environment variable
+in `/etc/environment` and reboot so the service picks it up.
