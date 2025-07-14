@@ -3,6 +3,7 @@ from __future__ import annotations
 from flask import Flask, jsonify, abort
 from pathlib import Path
 import json
+from ..analytics import compute_stats
 
 PERSONALITIES_FILE = Path("data/personalities.json")
 MEMORY_DIR = Path("memory")
@@ -39,6 +40,10 @@ def create_app() -> Flask:
         if file_path.exists():
             return jsonify(json.loads(file_path.read_text()))
         return jsonify([])
+
+    @app.get("/api/stats")
+    def get_stats():
+        return jsonify(compute_stats(MEMORY_DIR))
 
     return app
 

@@ -39,7 +39,7 @@ This document outlines prioritized enhancements and cleanup tasks to improve and
   - Install Ollama + Python
   - Deploy `api_server.py` + models
 
-- [ ] 📊 Build analytics dashboard (calls/hour, most popular character, etc.)
+- [x] 📊 Build analytics dashboard (calls/hour, most popular character, etc.)
 
 - [x] 🔉 Add local audio testing CLI (`simulate_call.py`)
 

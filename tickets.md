@@ -303,7 +303,7 @@ Description: Improve error handling in the API server for malformed audio or mis
 - [x] Tests Written
 - [x] Code Written
 - [x] Tests Passed
-- [ ] Documentation Written
+ - [x] Documentation Written
 
 Description: Build a web-based GUI for editing characters, viewing live logs, and running TTS/VAD tests.
 
@@ -312,16 +312,16 @@ Description: Build a web-based GUI for editing characters, viewing live logs, an
 - [x] Tests Written
 - [x] Code Written
 - [x] Tests Passed
-- [ ] Documentation Written
+ - [x] Documentation Written
 
 Description: Create a shell script to deploy the backend on Vast.ai including GPU setup and model installation.
 
 ## T34 - Analytics Dashboard
-- [ ] Started
-- [ ] Tests Written
-- [ ] Code Written
-- [ ] Tests Passed
-- [ ] Documentation Written
+- [x] Started
+- [x] Tests Written
+- [x] Code Written
+- [x] Tests Passed
+- [x] Documentation Written
 
 Description: Implement a dashboard showing call statistics such as calls per hour and most popular characters.
 
@@ -357,7 +357,7 @@ Description: Test outbound calling with more than one character active at a time
 - [x] Tests Written
 - [x] Code Written
 - [x] Tests Passed
-- [ ] Documentation Written
+ - [x] Documentation Written
 
 Description: Log recognized names and reuse them across multiple calls for continuity.
 
