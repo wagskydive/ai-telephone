@@ -21,6 +21,8 @@ To ensure that AI tools write consistent, maintainable, and modular code that al
   - [ ] Code Written
   - [ ] Tests Passed
   - [ ] Documentation Written
+- Always verify in planning.md that which tasks are completed and mark them accordingly.
+- Before creating the PR, always check planning.md and create new tickets for the next run.
 
 ## ✨ Coding Standards
 
