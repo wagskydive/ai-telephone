@@ -35,3 +35,12 @@ Description: Define personalities.json schema, load personalities, map extension
 - [x] Documentation Written
 
 Description: Implement memory_logger.py to save per-character interaction logs and call it from call_handler.
+
+## T5 - Situation Engine
+- [x] Started
+- [x] Tests Written
+- [x] Code Written
+- [x] Tests Passed
+- [x] Documentation Written
+
+Description: Add situation_generator module and integrate it with call_handler to request call context from the LLM server.
